@@ -23,6 +23,4 @@ class Database
 	}
 }
 
-$oo=new Database();
-var_dump($oo);
 
