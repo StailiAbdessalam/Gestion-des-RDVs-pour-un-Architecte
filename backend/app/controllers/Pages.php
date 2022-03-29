@@ -9,7 +9,8 @@
         'title' => 'TraversyMVC',
       ];
      
-      $this->view('pages/index', $data);
+      // $this->view('pages/index', $data);
+      $this->json(["message" => "success"]);
     }
 
     public function about(){
@@ -17,6 +18,8 @@
         'title' => 'About Us'
       ];
 
-      $this->view('pages/about', $data);
+      $model = $this->model("User");
+      // $this->view('pages/about', $data);
+      $this->json(["message" => "success"]);
     }
   }
