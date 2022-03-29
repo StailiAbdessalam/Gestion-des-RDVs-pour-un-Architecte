@@ -8,5 +8,5 @@ class Rdv
         $con = new Database();
         $this->db = $con->dbh;
     }
-    
+
 }
