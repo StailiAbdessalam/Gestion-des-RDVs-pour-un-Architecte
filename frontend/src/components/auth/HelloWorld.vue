@@ -2,7 +2,7 @@
   <div class="hello">
     <div class="container">
       <div class="logo">
-        <img src="../assets/img/logo.png" alt="">
+        <img src="../../assets/img/logo.png" alt="">
       </div>
       <div class="form">
         <div class="formContent" v-if="form">
@@ -33,10 +33,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
+  name: "Auth-m",
   data() {
     return {
       form: true,
@@ -47,5 +44,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import "../assets/style/helloWord.css";
+@import "../../assets/style/helloWord.css";
 </style>
