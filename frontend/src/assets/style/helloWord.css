@@ -2,6 +2,7 @@ html {
     /* background-image: url(../img/pexels-thirdman-5582599.jpg); */
     background-image: linear-gradient(to right, #13111159 , #03030342), url(../img/pexels-thirdman-5582599.jpg);
     background-size:cover;
+    backdrop-filter: blur(4px);
     
 }
 a{
