@@ -1,0 +1,39 @@
+html {
+    /* background-image: url(../img/pexels-thirdman-5582599.jpg); */
+    background-image: linear-gradient(to right, #13111159 , #03030342), url(../img/pexels-thirdman-5582599.jpg);
+    background-size:cover;
+    
+}
+a{
+    color: #a59187;
+}
+.form{
+    background-color: aliceblue;
+    border-radius: 12px;
+    width: 30%;
+    padding: 50px;
+    margin: auto;
+}
+input{
+    /* border: none; */
+    /* outline: none; */
+    border: 1px #8FBDD3 solid;
+    background-color: transparent;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+button{
+    padding: 11px;
+    background-color: #8FBDD3;
+    border: none;
+    color:aliceblue;
+}
+
+.formContetTwo form{
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+}
+.logo{
+    margin-bottom: 30px;
+}
