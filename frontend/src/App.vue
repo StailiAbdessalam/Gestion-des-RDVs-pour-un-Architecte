@@ -1,17 +1,17 @@
 <template>
   <div>
-    <HelloWorld />
+  <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/Auth">About</router-link>
+  </nav>
+  <router-view/>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/auth/HelloWorld.vue";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld,
-  },
+  components: {},
 };
 </script>
 
@@ -21,7 +21,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #e3e7eb;
+  /* margin-top: 60px; */
 }
 </style>

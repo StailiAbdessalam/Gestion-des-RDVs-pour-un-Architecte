@@ -1,13 +1,18 @@
 <template>
-  <h1>Bienvenue</h1>
+  <div>
+    <h1>Bienvenue</h1>
+    <HomeComp />
+  </div>
 </template>
 
 <script>
+// import HomeComp from '../components/home/HomeComp.vue';
+import HomeComp from "../components/home/HomeComp.vue";
 export default {
-name:'hala-z'
-}
+  components: { HomeComp },
+  name: "HomeView",
+};
 </script>
 
 <style>
-
 </style>

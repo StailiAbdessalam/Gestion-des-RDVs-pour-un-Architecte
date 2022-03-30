@@ -1,17 +1,17 @@
-
-<script>
-import HelloWorld from "../components/auth/HelloWorld.vue";
-export default {
-  components: { HelloWorld },
-  name: "Auth-z",
-};
-
-</script>
-
 <template>
-  <HelloWorld />
+  <div>
+    <HelloWorld />
+  </div>
 </template>
 
+<script>
+import HelloWorld from "../components/auth/HelloWorld.vue"
+export default {
+  name:"AuthView",
+  components: { HelloWorld },
+
+};
+</script>
 
 <style>
 </style>
