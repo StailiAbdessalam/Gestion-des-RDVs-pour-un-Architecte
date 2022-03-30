@@ -1,7 +1,7 @@
 <?php
-require_once APPROOT.'/config.php';
-require_once APPROOT.'/config/Functions.php';
-class User
+require_once APPROOT.'/config/config.php';
+require_once APPROOT."../config/Function.php";
+class UserModel
 {
     protected $db;
     public function __construct()
