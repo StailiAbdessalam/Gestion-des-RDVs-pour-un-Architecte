@@ -2,13 +2,13 @@
   <div class="hello">
     <div class="container">
       <div class="logo">
-        <img src="../../assets/img/logo.png" alt="">
+        <img src="../../assets/img/logo.png" alt="" />
       </div>
       <div class="form">
         <div class="formContent" v-if="form">
           <form action="" method="">
             <input type="text" placeholder="Auth By PIN" />
-            <button>Submit</button>
+            <button class="bg-sky-600 hover:bg-sky-700 ">Submit</button>
             <a href="#" v-on:click="form = !form"
               ><br />You dont have one? <span>Creat an account</span></a
             >
@@ -19,7 +19,7 @@
             <input type="text" placeholder="Full name" />
             <input type="number" placeholder="Age" />
             <input type="text" placeholder="Profession" />
-            <button>Submit</button>
+            <button class="bg-sky-600 hover:bg-sky-700">Submit</button>
 
             <a href="#" v-on:click="form = !form"
               ><br />Already have an account?</a
@@ -45,4 +45,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import "../../assets/style/helloWord.css";
+.hello {
+  background-image: url(../../assets/img/pexels-thirdman-5582599.jpg);
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 </style>
