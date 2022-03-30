@@ -1,14 +1,13 @@
 <template>
   <div class="hello">
     <div class="container">
-      <div class="logo">
-        <img src="../../assets/img/logo.png" alt="" />
-      </div>
+
       <div class="form">
         <div class="formContent" v-if="form">
           <form action="" method="">
             <input type="text" placeholder="Auth By PIN" />
-            <button class="bg-sky-600 hover:bg-sky-700 ">Submit</button>
+            <button class="bg-sky-600 hover:bg-sky-700">As user</button>
+            <button class="bg-sky-600 hover:bg-sky-700">As Admin</button>
             <a href="#" v-on:click="form = !form"
               ><br />You dont have one? <span>Creat an account</span></a
             >

@@ -47,9 +47,7 @@ button {
   flex-direction: column;
   /* width: 50%; */
 }
-.logo img {
-  margin: 10px 0 10px;
-}
+
 
 @media screen and (max-width: 768px) {
   .form {
