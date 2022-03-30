@@ -1,7 +1,7 @@
 <?php
 
   class Core {
-    protected $currentController = 'Pages';
+    protected $currentController = 'User';
     protected $currentMethod = 'index';
     protected $params = [];
 

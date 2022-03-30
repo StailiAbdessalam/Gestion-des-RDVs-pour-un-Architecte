@@ -1,6 +1,6 @@
 <?php
-require_once "../libraries/Database.php";
-require_once "../config/Function.php";
+require_once APPROOT.'/config.php';
+require_once APPROOT.'/config/Functions.php';
 class User
 {
     protected $db;
