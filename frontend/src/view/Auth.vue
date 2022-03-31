@@ -1,7 +1,7 @@
 <template>
   <div>
     <br>
-    <HelloWorld />
+    <HelloWorld :role="role" :changeRole="changeRole" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import HelloWorld from "../components/auth/HelloWorld.vue"
 export default {
   name:"AuthView",
   components: { HelloWorld },
-
+  props: ["role", "changeRole"]
 };
 </script>
 

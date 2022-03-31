@@ -3,7 +3,7 @@
     <div class="container ">
       <div class="bg-white p-10 rounded-lg shadow-lg w-3/5">
         <div class="formContent" v-if="form">
-          <form action="" method="">
+          <form @submit.prevent="" action="" method="">
             <input
               class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
               type="text"
@@ -12,8 +12,8 @@
               placeholder="Auth By PIN"
             />
             <div class="buttons">
-              <button class="bg-sky-600 hover:bg-sky-700">As user</button>
-              <button class="bg-sky-600 hover:bg-sky-700">As Admin</button>
+              <button class="bg-sky-600 hover:bg-sky-700" @click="changeRole('user')">As user</button>
+              <button class="bg-sky-600 hover:bg-sky-700" @click="changeRole('admin')">As Admin</button>
             </div>
             <a href="#" v-on:click="form = !form"
               ><br />You dont have one? <span>Creat an account</span></a
@@ -45,6 +45,7 @@ export default {
       form: true,
     };
   },
+  props:["role", "changeRole"],
   methods: {
     showAlert() {
       // Use sweetalert2
