@@ -1,15 +1,10 @@
 <?php
-
-use function PHPSTORM_META\type;
-
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin:*');
 header('Access-Control-Allow-Methods:*');
-
-// require_once('../models/UserModel.php');
-
 class User extends Controller
 {
+  public $valide = "false";
   public function __construct()
   {
   }
@@ -17,30 +12,25 @@ class User extends Controller
   public function index()
   {
     $user = $this->model('UserModel');
-    // users si la liste des user in database
     $users = $user->SelectAll();
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $json = file_get_contents('php://input');
-      // data donner une chiffre unique
-      // var_dump($users);
       $data = json_decode($json);
+      foreach ($users as $user) {
+        if ($user['Reference_unique'] == $data) {
+          $this->valide = true;
+          break;
+        } else {
+          $this->valide = false;
+        }
+      }
     }
-    // var_dump($users);
+    echo json_encode($this->valide);
+    // echo "hslfhids";
   }
 
   public function register()
-  { 
-    $CreateAcc = $this->model('UserModel');
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-      $json = file_get_contents('php://input');
-      $data = json_decode($json);
-      $data = array_values((array)$data);
-      // echo ($data[0]);
-      // echo ($data->{"Nom"});
-      $created = $CreateAcc->insert($data);
-      if($created){
-        echo json_encode("nice");
-      }
-    }
+  {
+    echo "register hi ";
   }
 }

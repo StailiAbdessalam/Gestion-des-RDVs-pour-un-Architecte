@@ -21,11 +21,16 @@ class Admin extends Controller
             $data = json_decode($json);
             foreach ($admins as $admin) {
                 if ($admin['reference_unique'] == $data) {
-                    echo "true";
+                    $this->valide = true;
+                    break;
                 } else {
-                    echo "false";
+                    $this->valide = false;
                 }
             }
+            echo json_encode($this->valide);
+            
+
+            
         }
     }
 
