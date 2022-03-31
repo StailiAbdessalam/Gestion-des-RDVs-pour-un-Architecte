@@ -31,6 +31,6 @@ export default {
   text-align: center;
 }
 button {
-  border-radius: 3px;
-}
+  }
+
 </style>

@@ -13,14 +13,17 @@
               v-model="PIN"
             />
             <div class="buttons">
-              <input type="submit" value="As user" class="bg-sky-600 hover:bg-sky-700" @click="changeRole('user')">
+              <input
+                type="submit"
+                value="As user"
+                class="hdsj bg-sky-600 hover:bg-sky-700"
+                @click="changeRole('user')"
+              />
               <input
                 type="submit"
                 value="as admin"
-                class="bg-sky-600 hover:bg-sky-700"
-                
+                class="hdsj bg-sky-600 hover:bg-sky-700"
                 @click="checkAdmin()"
-
               />
             </div>
             <a href="#" v-on:click="form = !form">
@@ -31,15 +34,19 @@
         </div>
         <div class="formContetTwo" v-if="!form">
           <form>
-            <input type="text" placeholder="Full name" />
-            <input type="number" placeholder="Age" />
-            <input type="text" placeholder="Profession" />
-            <input type="text" placeholder="CIN" />
+            <input type="text" v-model="registreForm.Nom" placeholder="Nom" />
+            <input
+              type="text"
+              v-model="registreForm.Prenom"
+              placeholder="Prenom"
+            />
+            <input type="number" v-model="registreForm.Age" placeholder="Age" />
+            <input type="text" v-model="registreForm.CIN" placeholder="CIN" />
             <input
               type="button"
-              class="bg-sky-600 hover:bg-sky-700"
+              class="hdsj bg-sky-600 hover:bg-sky-700"
               value="Submit"
-              @click="showAlert()"
+              @click="addUser()"
             />
             <a href="#" v-on:click="form = !form">
               <br />Already have an account?
@@ -57,26 +64,50 @@ export default {
   data() {
     return {
       form: true,
+      registreForm: {
+        Nom: "",
+        Prenom: "",
+        Age: "",
+        CIN: "",
+      },
       PIN: "",
     };
   },
-  props: ["role", "changeRole"],
+  props: ["role", "changeRole", "add"],
   methods: {
     showAlert() {
       // Use sweetalert2
       this.$swal("Hello Vue world!!!");
     },
+    addUser() {
+      fetch("http://localhost/BRIEFS_6/User/register", {
+        method: "POST",
+        body: JSON.stringify(this.registreForm),
+      })
+        .then((result) => {
+          return result.json();
+        })
+        .then((data) => {
+          if (data) {
+            this.showAlert();
+          }
+          // this.add(data);
+        });
+    },
     checkAdmin() {
       fetch("http://localhost/BRIEFS_6/Admin/index", {
         method: "POST",
-        body: JSON.stringify(this.PIN)
-      }).then(result => { return result.json() })
-        .then(reponse =>{
-          if(reponse == true){
-            this.changeRole('admin');
-          }
+        body: JSON.stringify(this.PIN),
+      })
+        .then((result) => {
+          return result.json();
         })
-    }
+        .then((reponse) => {
+          if (reponse == true) {
+            this.changeRole("admin");
+          }
+        });
+    },
   },
 };
 </script>
@@ -91,4 +122,8 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.hdsj{
+  border-radius: 3px;
+  color: white;
+} 
 </style>

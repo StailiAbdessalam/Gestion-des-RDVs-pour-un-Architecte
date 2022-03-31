@@ -1,4 +1,13 @@
 <?php
+
+use function PHPSTORM_META\type;
+
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin:*');
+header('Access-Control-Allow-Methods:*');
+
+// require_once('../models/UserModel.php');
+
 class User extends Controller
 {
   public function __construct()
@@ -16,11 +25,22 @@ class User extends Controller
       // var_dump($users);
       $data = json_decode($json);
     }
-    var_dump($users);
+    // var_dump($users);
   }
 
   public function register()
-  {
-    echo "register hi ";
+  { 
+    $CreateAcc = $this->model('UserModel');
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+      $json = file_get_contents('php://input');
+      $data = json_decode($json);
+      $data = array_values((array)$data);
+      // echo ($data[0]);
+      // echo ($data->{"Nom"});
+      $created = $CreateAcc->insert($data);
+      if($created){
+        echo json_encode("nice");
+      }
+    }
   }
 }
