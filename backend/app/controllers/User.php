@@ -17,13 +17,18 @@ class User extends Controller
   public function index()
   {
     $user = $this->model('UserModel');
-    // users si la liste des user in database
     $users = $user->SelectAll();
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $json = file_get_contents('php://input');
-      // data donner une chiffre unique
-      // var_dump($users);
       $data = json_decode($json);
+      //  var_dump($data);
+      foreach ($users as $user) {
+        if ($user['Reference_unique'] == $data) {
+          echo "true";
+        } else {
+          echo "false";
+        }
+      }
     }
     // var_dump($users);
   }

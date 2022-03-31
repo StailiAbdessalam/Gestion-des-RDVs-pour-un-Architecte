@@ -17,7 +17,7 @@
                 type="submit"
                 value="As user"
                 class="hdsj bg-sky-600 hover:bg-sky-700"
-                @click="changeRole('user')"
+                @click="checkUser()"
               />
               <input
                 type="submit"
@@ -97,10 +97,25 @@ export default {
     checkAdmin() {
       fetch("http://localhost/BRIEFS_6/Admin/index", {
         method: "POST",
-        body: JSON.stringify(this.PIN),
-      })
-        .then((result) => {
-          return result.json();
+        body: JSON.stringify(this.PIN)
+      }).then(result => { return result.json() })
+        .then(reponse => {
+          if (reponse == true) {
+            this.changeRole('admin');
+            this.$router.push('/Admin')
+          }
+        })
+    },
+    checkUser() {
+      fetch("http://localhost/BRIEFS_6/User/index", {
+        method: "POST",
+        body: JSON.stringify(this.PIN)
+      }).then(result => { return result.json() })
+        .then(reponse => {
+          if (reponse == true) {
+            this.changeRole('user');
+            this.$router.push('/User')
+          }
         })
         .then((reponse) => {
           if (reponse == true) {
