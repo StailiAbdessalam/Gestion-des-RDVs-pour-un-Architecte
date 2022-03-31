@@ -1,6 +1,6 @@
 <template>
-  <div class="hello ">
-    <div class="container ">
+  <div class="hello">
+    <div class="container">
       <div class="bg-white p-10 rounded-lg shadow-lg w-3/5">
         <div class="formContent" v-if="form">
           <form @submit.prevent="" action="" method="">
@@ -13,8 +13,18 @@
               v-model="PIN"
             />
             <div class="buttons">
-              <button class="bg-sky-600 hover:bg-sky-700" @click="changeRole('user')">As user</button>
-              <button class="bg-sky-600 hover:bg-sky-700" @click="changeRole('admin')">As Admin</button>
+              <button
+                class="bg-sky-600 hover:bg-sky-700"
+                @click="changeRole('user')"
+              >
+                As user
+              </button>
+              <button
+                class="bg-sky-600 hover:bg-sky-700"
+                @click="changeRole('admin')"
+              >
+                As Admin
+              </button>
             </div>
             <a href="#" v-on:click="form = !form"
               ><br />You dont have one? <span>Creat an account</span></a
@@ -27,7 +37,12 @@
             <input type="number" placeholder="Age" />
             <input type="text" placeholder="Profession" />
             <input type="text" placeholder="CIN" />
-            <input type="button" class="bg-sky-600 hover:bg-sky-700" value="Submit"  @click="showAlert()" />
+            <input
+              type="button"
+              class="bg-sky-600 hover:bg-sky-700"
+              value="Submit"
+              @click="showAlert()"
+            />
             <a href="#" v-on:click="form = !form"
               ><br />Already have an account?</a
             >
@@ -44,15 +59,16 @@ export default {
   data() {
     return {
       form: true,
-      PIN:"",
+      PIN: "",
     };
   },
-  props:["role", "changeRole"],
+  props: ["role", "changeRole"],
   methods: {
     showAlert() {
       // Use sweetalert2
-      this.$swal('Hello Vue world!!!');
+      this.$swal("Hello Vue world!!!");
     },
+
   },
 };
 </script>

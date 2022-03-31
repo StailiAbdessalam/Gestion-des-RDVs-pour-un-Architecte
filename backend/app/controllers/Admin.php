@@ -1,4 +1,8 @@
 <?php
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin:*');
+header('Access-Control-Allow-Methods:*');
+
 class Admin extends Controller
 {
     public $valide = false;
@@ -15,10 +19,10 @@ class Admin extends Controller
             $json = file_get_contents('php://input');
             $data = json_decode($json);
             // data donner une chiffre unique
-            // var_dump($users);
             foreach ($admins as $admin) {
                 if ($admin['Reference_unique'] == $data->Reference_unique) {
                     $this->valide = true;
+                    // echo "sifksjfskfdsqjdqdj";
                 } else {
                     echo "false";
                 }
