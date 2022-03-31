@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navigation :role="role"/>
+    <Navigation :role="role" />
     <router-view :changeRole="changeRole" :role="role" />
   </div>
 </template>
@@ -12,11 +12,11 @@ export default {
   components: { Navigation },
   data() {
     return {
-        role: ""
+      role: ""
     }
   },
   methods: {
-    changeRole(newRole){
+    changeRole(newRole) {
       this.role = newRole;
     }
   }
@@ -33,5 +33,4 @@ export default {
 button {
   border-radius: 3px;
 }
-
 </style>
