@@ -13,14 +13,17 @@
               v-model="PIN"
             />
             <div class="buttons">
-              <input type="submit" value="As user" class="bg-sky-600 hover:bg-sky-700" @click="changeRole('user')">
+              <input
+                type="submit"
+                value="As user"
+                class="bg-sky-600 hover:bg-sky-700"
+                @click="checkUser()"
+              />
               <input
                 type="submit"
                 value="as admin"
                 class="bg-sky-600 hover:bg-sky-700"
-                
                 @click="checkAdmin()"
-
               />
             </div>
             <a href="#" v-on:click="form = !form">
@@ -71,9 +74,22 @@ export default {
         method: "POST",
         body: JSON.stringify(this.PIN)
       }).then(result => { return result.json() })
-        .then(reponse =>{
-          if(reponse == true){
+        .then(reponse => {
+          if (reponse == true) {
             this.changeRole('admin');
+            this.$router.push('/Admin')
+          }
+        })
+    },
+    checkUser() {
+      fetch("http://localhost/BRIEFS_6/User/index", {
+        method: "POST",
+        body: JSON.stringify(this.PIN)
+      }).then(result => { return result.json() })
+        .then(reponse => {
+          if (reponse == true) {
+            this.changeRole('user');
+            this.$router.push('/User')
           }
         })
     }

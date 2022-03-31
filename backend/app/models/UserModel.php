@@ -39,7 +39,7 @@ class UserModel
     public function insert($data)
     {
         $conn = $this->db;
-        $requi = "INSERT INTO `utilisateur` (" . getval($data) . ") VALUES (" . getPlaceholders($data) . ")";
+        $requi = "INSERT INTO `utilisateur` (Nom,Prenom,Age,CIN,Reference_unique) VALUES (?,?,?,? )";
         $stm = $conn->prepare($requi);
         $stm->execute($data);
     }
@@ -50,4 +50,5 @@ class UserModel
         $stm = $conn->prepare($requi);
         $stm->execute();
     }
+    
 }

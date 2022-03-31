@@ -3,7 +3,7 @@ import HomeView from '../view/HomeUser.vue'
 
 const routes = [
   {
-    path: '/Home',
+    path: '/User',
     name: 'home',
     component: HomeView
   },
@@ -22,7 +22,7 @@ const routes = [
     component: () => import( /* webpackChunkName: "about" */ '../view/OldRdv.vue')
   },
   {
-    path: '/z',
+    path: '/Admin',
     name: 'admin',
 
     component: () => import(/* webpackChunkName: "about" */ '../view/Dashboerd.vue')
