@@ -15,14 +15,13 @@ class Admin extends Controller
         $admin = $this->model('AdminModel');
         // users si la liste des user in database
         $admins = $admin->selectAll();
+        // var_dump($admins);
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $json = file_get_contents('php://input');
             $data = json_decode($json);
-            // data donner une chiffre unique
             foreach ($admins as $admin) {
-                if ($admin['Reference_unique'] == $data->Reference_unique) {
-                    $this->valide = true;
-                    // echo "sifksjfskfdsqjdqdj";
+                if ($admin['reference_unique'] == $data) {
+                    echo "true";
                 } else {
                     echo "false";
                 }
