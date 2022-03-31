@@ -1,25 +1,32 @@
 <template>
-  <div class="hello">
-    <div class="container">
-
-      <div class="form">
+  <div class="hello ">
+    <div class="container ">
+      <div class="bg-white p-10 rounded-lg shadow-lg w-3/5">
         <div class="formContent" v-if="form">
           <form action="" method="">
-            <input type="text" placeholder="Auth By PIN" />
-            <button class="bg-sky-600 hover:bg-sky-700">As user</button>
-            <button class="bg-sky-600 hover:bg-sky-700">As Admin</button>
+            <input
+              class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
+              type="text"
+              name="pin"
+              id="PIN"
+              placeholder="Auth By PIN"
+            />
+            <div class="buttons">
+              <button class="bg-sky-600 hover:bg-sky-700">As user</button>
+              <button class="bg-sky-600 hover:bg-sky-700">As Admin</button>
+            </div>
             <a href="#" v-on:click="form = !form"
               ><br />You dont have one? <span>Creat an account</span></a
             >
           </form>
         </div>
         <div class="formContetTwo" v-if="!form">
-          <form action="" method="post">
+          <form>
             <input type="text" placeholder="Full name" />
             <input type="number" placeholder="Age" />
             <input type="text" placeholder="Profession" />
-            <button class="bg-sky-600 hover:bg-sky-700">Submit</button>
-
+            <input type="text" placeholder="CIN" />
+            <input type="button" class="bg-sky-600 hover:bg-sky-700" value="Submit"  @click="showAlert()" />
             <a href="#" v-on:click="form = !form"
               ><br />Already have an account?</a
             >
@@ -38,6 +45,12 @@ export default {
       form: true,
     };
   },
+  methods: {
+    showAlert() {
+      // Use sweetalert2
+      this.$swal('Hello Vue world!!!');
+    },
+  },
 };
 </script>
 
@@ -45,8 +58,9 @@ export default {
 <style scoped>
 @import "../../assets/style/helloWord.css";
 .hello {
-  background-image: url(../../assets/img/pexels-thirdman-5582599.jpg);
+  /* background-image: url(../../assets/img/pexels-thirdman-5582599.jpg); */
   height: 100vh;
+  position: relative;
   background-repeat: no-repeat;
   background-size: cover;
 }

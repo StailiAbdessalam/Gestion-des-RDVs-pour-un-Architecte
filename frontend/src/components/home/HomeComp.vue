@@ -14,22 +14,23 @@
             Prendre un rendez-vous
           </h1>
           <div>
-            <label class="text-gray-800 font-semibold block my-3" for="Sujet"
-              >Sujet</label
+            <label class="text-left text-gray-800 font-semibold block my-3" for="Sujet"
+              >Sujet :</label
             >
             <input
               class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
-              type="message"
+              type="textarea"
               name="Sujet"
+              v-model="sujet"
               id="Sujet"
               placeholder="Sujet"
             />
           </div>
           <div>
             <label
-              class="text-gray-800 font-semibold block my-3 text-md"
+              class="text-left text-gray-800 font-semibold block my-3 text-md"
               for="date"
-              >Date</label
+              >Date :</label
             >
             <input
               class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
@@ -42,9 +43,9 @@
           </div>
           <div class="flex flex-col">
             <label
-              class="text-gray-800 font-semibold block my-3 text-md"
+              class="text-left text-gray-800 font-semibold block my-3 text-md"
               for="date"
-              >Créneaux
+              >Créneaux :
             </label>
             <label class="inline-flex items-center mt-3">
               <input
@@ -84,20 +85,7 @@
               >
             </label>
           </div>
-          <button
-            type="submit"
-            class="
-              w-full
-              mt-6
-              bg-indigo-600
-              rounded-lg
-              px-4
-              py-2
-              text-lg text-white
-              tracking-wide
-              font-semibold font-sans
-            "
-          >
+          <button type="submit" class="bg-sky-600 hover:bg-sky-700">
             Confirmer
           </button>
         </form>

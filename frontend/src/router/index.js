@@ -16,12 +16,17 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../view/Auth.vue')
   },
   {
-    path: '/404',
+    path: '/OldRdv',
     name: 'Error404',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../view/404.vue')
+
+    component: () => import( /* webpackChunkName: "about" */ '../view/OldRdv.vue')
+  },
+  {
+    path: '/z',
+    name: 'admin',
+
+    component: () => import(/* webpackChunkName: "about" */ '../view/Dashboerd.vue')
+
   },
 
 ]
