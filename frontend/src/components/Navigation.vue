@@ -25,7 +25,8 @@
 <script >
 export default {
     name: "nav-item",
-    props: ["role"]
+    props: ["role"],
+  
 }
 </script>
 <style  >
