@@ -1,11 +1,12 @@
 <template>
   <div>
-    <HomeComp />
+    <home-comp/>
   </div>
 </template>
 
 <script>
-import HomeComp from "../components/Home/HomeComp.vue";
+import HomeComp from '../components/home/HomeComp.vue';
+
 export default {
   components: { HomeComp },
   name: "HomeView",

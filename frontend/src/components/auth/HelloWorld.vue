@@ -10,6 +10,7 @@
               name="pin"
               id="PIN"
               placeholder="Auth By PIN"
+              v-model="PIN"
             />
             <div class="buttons">
               <button class="bg-sky-600 hover:bg-sky-700" @click="changeRole('user')">As user</button>
@@ -43,6 +44,7 @@ export default {
   data() {
     return {
       form: true,
+      PIN:"",
     };
   },
   props:["role", "changeRole"],
