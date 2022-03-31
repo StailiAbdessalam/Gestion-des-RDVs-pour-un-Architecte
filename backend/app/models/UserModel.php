@@ -56,4 +56,5 @@ class UserModel
         $stm = $conn->prepare($requi);
         $stm->execute();
     }
+
 }
