@@ -18,7 +18,6 @@ class UserModel
         $result = $stm->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-
     public function select($data, $id)
     {
         $conn = $this->db;
