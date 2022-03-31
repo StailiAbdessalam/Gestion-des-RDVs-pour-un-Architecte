@@ -26,10 +26,17 @@ class Admin extends Controller
         }
     }
 
-    public function DELETE()
+    public function DELETEUSER()
     {
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $admin = $this->model('UserModel');
+            $admin->remove($_GET['id']);
+        }
+    }
+    public function DELETERDV()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === "GET") {
+            $admin = $this->model('RDVModel');
             $admin->remove($_GET['id']);
         }
     }

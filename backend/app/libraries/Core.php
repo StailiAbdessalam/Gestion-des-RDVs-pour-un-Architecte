@@ -1,12 +1,9 @@
 <?php
-
 class Core
 {
   protected $currentController = 'User';
   protected $currentMethod = 'index';
-  protected $Erour = "Erour";
   protected $params = [];
-
   public function __construct()
   {
     $url = $this->getUrl();
