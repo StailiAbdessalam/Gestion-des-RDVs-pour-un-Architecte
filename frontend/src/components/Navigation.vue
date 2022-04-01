@@ -13,8 +13,7 @@
           >Tous mes rendez-vous</router-link
         >
       </template>
-      <router-link v-if="role === 'admin'" class="nav-item" to="/Admin"
-        >Admin</router-link
+      <router-link v-if="role === 'admin'" class="nav-item" to="/Admin">Admin</router-link
       >
       <!-- <router-link  class="nav-item" to="/"> -->
       <!-- <form   action="\" > -->

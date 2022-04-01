@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{id}}
     <section class="container mx-auto p-6 font-mono">
       <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
         <div class="w-full overflow-x-auto">
@@ -58,11 +59,15 @@
 <script>
 export default {
   name: "Contact-us",
+  props: ["id"],
   data() {
     return {
-      AllRDV: true
+      AllRDV: true,
     }
-  }, methods: {
+  },
+  mounted() {
+  },
+  methods: {
     getAllRDV() {
       fetch("http://localhost/BRIEFS_6/User/getAllRDV?id=''", {
         method: "GET",

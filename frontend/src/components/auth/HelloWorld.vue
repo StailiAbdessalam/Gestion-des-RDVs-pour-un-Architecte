@@ -21,7 +21,7 @@
               />
               <input
                 type="submit"
-                value="as admin"
+                 value="as admin"
                 class="hgjd bg-sky-600 hover:bg-sky-700"
                 @click="checkAdmin()"
               />
@@ -39,7 +39,7 @@
               type="text"
               v-model="registreForm.Prenom"
               placeholder="Prenom"
-            />
+            />  
             <input type="number" v-model="registreForm.Age" placeholder="Age" />
             <input
               type="TEXT"
@@ -80,7 +80,7 @@ export default {
       Reference_unique : true,
     };
   },
-  props: ["role", "changeRole", "add"],
+  props: ["setCurrentId","role", "changeRole", "add"],
   methods: {
 
     showAlert(param) {
@@ -97,7 +97,7 @@ export default {
         })
         .then((reponse) => {
           if (reponse == true) {
-            this.Nom = reponse;
+            
             this.changeRole("admin");
             this.$router.push("/Admin");
           }
@@ -113,7 +113,7 @@ export default {
         })
         .then((reponse) => {
           if (reponse === true) {
-            this.id = reponse.id;
+            this.setCurrentId(Math.random().toString(32))
             this.changeRole("user");
             this.$router.push("/User");
           }
