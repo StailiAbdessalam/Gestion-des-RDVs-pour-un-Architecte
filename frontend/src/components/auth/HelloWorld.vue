@@ -5,7 +5,7 @@
         <div class="formContent" v-if="form">
           <form @submit.prevent action method>
             <input
-              class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
+              class=" w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
               type="text"
               name="pin"
               id="PIN"
@@ -16,13 +16,13 @@
               <input
                 type="submit"
                 value="As user"
-                class="bg-sky-600 hover:bg-sky-700"
+                class="hgjd bg-sky-600 hover:bg-sky-700"
                 @click="checkUser()"
               />
               <input
                 type="submit"
                 value="as admin"
-                class="bg-sky-600 hover:bg-sky-700"
+                class="hgjd bg-sky-600 hover:bg-sky-700"
                 @click="checkAdmin()"
               />
             </div>
@@ -40,7 +40,7 @@
             <input type="text" placeholder="CIN" />
             <input
               type="button"
-              class="bg-sky-600 hover:bg-sky-700"
+              class="hgjd bg-sky-600 hover:bg-sky-700"
               value="Submit"
               @click="showAlert()"
             />
@@ -112,5 +112,9 @@ export default {
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.hgjd{
+  color: aliceblue;
+  border-radius: 3px;
 }
 </style>
