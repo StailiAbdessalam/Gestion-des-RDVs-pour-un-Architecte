@@ -41,6 +41,7 @@
               placeholder="Prenom"
             />  
             <input type="number" v-model="registreForm.Age" placeholder="Age" />
+            <input type="TEXT" v-model="registreForm.Job" placeholder="profession" />
             <input type="text" v-model="registreForm.CIN" placeholder="CIN" />
             <input
               type="button"
@@ -68,6 +69,7 @@ export default {
         Nom: "",
         Prenom: "",
         Age: "",
+        Job: "",
         CIN: "",
       },
       PIN: "",
