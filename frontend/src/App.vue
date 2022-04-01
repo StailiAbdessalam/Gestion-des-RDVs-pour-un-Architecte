@@ -1,23 +1,30 @@
 <template>
   <div>
     <Navigation :role="role" />
-    <router-view :changeRole="changeRole" :role="role" :setCurrentId="setCurrentId" :id="id" />
+    <router-view :changeRole="changeRole" :role="role" />
   </div>
 </template>
 
 <script>
 import Navigation from "./components/Navigation.vue";
+import {computed} from 'vue'
 export default {
   name: "App",
+  provide() {
+    return {
+      setCurrentId:this.setCurrentId,
+      id: computed(() => this.id),
+    }
+  },
   components: { Navigation },
   data() {
     return {
       role: "",
-      id:""
+      id: ""
     }
   },
   methods: {
-    setCurrentId(id){
+     setCurrentId(id) {
       this.id = id
     },
     changeRole(newRole) {
@@ -34,6 +41,4 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
-
-
 </style>

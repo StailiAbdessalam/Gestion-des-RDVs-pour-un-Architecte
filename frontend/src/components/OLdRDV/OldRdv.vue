@@ -60,7 +60,7 @@
 <script>
 export default {
   name: "Contact-us",
-  props: ["id"],
+  inject: ["id"],
   data() {
     return {
       AllRDV: true,
@@ -68,14 +68,16 @@ export default {
   },
   mounted() {
   },
+
   methods: {
     getAllRDV() {
-      fetch("http://localhost/BRIEFS_6/User/getAllRDV?id=''", {
+      fetch(`http://localhost/BRIEFS_6/User/getAllRDV?id='${this.id}'`, {
         method: "GET",
       }).then(result => { return result.json() })
         .then(reponse => {
-          this.AllRDV = reponse
           console.log(reponse);
+          this.AllRDV = reponse
+          
         })
     }
   },
