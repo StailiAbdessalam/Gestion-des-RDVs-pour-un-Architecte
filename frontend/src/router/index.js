@@ -17,7 +17,7 @@ const routes = [
   },
   {
     path: '/User',
-    name: 'Error404',
+    name: 'OLD',
 
     component: () => import( /* webpackChunkName: "about" */ '../view/OldRDV.vue')
   },
