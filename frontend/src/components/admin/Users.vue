@@ -43,7 +43,7 @@
                   >profession</span> -->
                 </td>
                 <td class="px-4 py-3 text-sm border">{{user.CIN}}</td>
-                <td class="px-4 py-3 text-sm border"><a href="">Delete</a> &nbsp; <a href="">Update</a></td>
+                <td class="px-4 py-3 text-sm border"><a href="">Delete</a> &nbsp; <a href=""></a></td>
               </tr>
               
             </tbody>

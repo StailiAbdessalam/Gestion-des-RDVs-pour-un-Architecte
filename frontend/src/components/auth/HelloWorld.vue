@@ -41,7 +41,11 @@
               placeholder="Prenom"
             />
             <input type="number" v-model="registreForm.Age" placeholder="Age" />
-            <input type="TEXT" v-model="registreForm.Job" placeholder="profession" />
+            <input
+              type="TEXT"
+              v-model="registreForm.Job"
+              placeholder="profession"
+            />
             <input type="text" v-model="registreForm.CIN" placeholder="CIN" />
             <input
               type="button"
@@ -73,13 +77,15 @@ export default {
         CIN: "",
       },
       PIN: "",
+      Reference_unique : true,
     };
   },
   props: ["role", "changeRole", "add"],
   methods: {
-    showAlert() {
+
+    showAlert(param) {
       // Use sweetalert2
-      this.$swal("Hello Vue world!!!");
+      this.$swal(param);
     },
     checkAdmin() {
       fetch("http://localhost/BRIEFS_6/Admin/index", {
@@ -123,7 +129,7 @@ export default {
         })
         .then((data) => {
           if (data) {
-            this.showAlert();
+            this.showAlert(data[5]);
           }
           // this.add(data);
         });

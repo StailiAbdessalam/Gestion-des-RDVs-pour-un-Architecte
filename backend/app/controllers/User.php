@@ -36,18 +36,25 @@ class User extends Controller
       $json = file_get_contents('php://input');
       $data = json_decode($json);
       $data = array_values((array)$data);
+      $data[5]=uniqid();
       $created = $CreateAcc->insert($data);
       if ($created) {
-        echo json_encode("nice");
+        echo json_encode($data);
       }
     }
   }
-  
 
   public function getAllRDV()
   {
     $user = $this->model('RDVModel');
     $users = $user->selectAll($_GET['id']);
     echo json_encode($users);
+  }
+
+  public function getOne()
+  {
+    $select = $this->model('UserModel');
+    $selected = $select->selectAll();
+    echo json_encode($selected);
   }
 }
