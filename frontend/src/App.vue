@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navigation :role="role" />
-    <router-view :changeRole="changeRole" :role="role" />
+    <router-view :changeRole="changeRole" :role="role" :setCurrentId="setCurrentId" :id="id" />
   </div>
 </template>
 
@@ -17,6 +17,9 @@ export default {
     }
   },
   methods: {
+    setCurrentId(id){
+      this.id = id
+    },
     changeRole(newRole) {
       this.role = newRole;
     }
