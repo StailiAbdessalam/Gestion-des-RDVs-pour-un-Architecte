@@ -1,7 +1,7 @@
 <template>
   <div>
     <br>
-    <HelloWorld :role="role" :changeRole="changeRole" :setCurrentId="setCurrentId"  />
+    <HelloWorld :role="role" :changeRole="changeRole" />
   </div>
 </template>
 
@@ -10,7 +10,8 @@ import HelloWorld from "../components/auth/HelloWorld.vue"
 export default {
   name:"AuthView",
   components: { HelloWorld },
-  props: ["role", "changeRole" ,"id", "setCurrentId"]
+  inject:["setCurrentId"],
+  props: ["role", "changeRole" ,"id"]
 };
 </script>
 

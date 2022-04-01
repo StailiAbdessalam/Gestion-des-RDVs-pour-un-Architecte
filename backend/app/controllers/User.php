@@ -18,7 +18,7 @@ class User extends Controller
       $data = json_decode($json);
       foreach ($users as $user) {
         if ($user['Reference_unique'] == $data) {
-          $this->valide = true;
+          $this->valide = $user;
           break;
         } else {
           $this->valide = false;
@@ -46,9 +46,11 @@ class User extends Controller
 
   public function getAllRDV()
   {
-    $user = $this->model('RDVModel');
-    $users = $user->selectAll($_GET['id']);
-    echo json_encode($users);
+    if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    $RDV = $this->model('RDVModel');
+    $RDVs = $RDV->selectAll($_GET['id']);
+    echo json_encode($RDVs);
+    }
   }
 
   public function getOne()

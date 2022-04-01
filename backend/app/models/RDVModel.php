@@ -12,7 +12,7 @@ class RDVModel
     public function selectAll($id)
     {
         $conn = $this->db;
-        $requi = "SELECT * FROM `reservation` where id=$id";
+        $requi = "SELECT * FROM `reservation` where id_utilisateur=$id";
         $stm = $conn->prepare($requi);
         $stm->execute();
         $result = $stm->fetchAll(PDO::FETCH_ASSOC);

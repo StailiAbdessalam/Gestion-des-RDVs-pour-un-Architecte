@@ -80,7 +80,8 @@ export default {
       Reference_unique : true,
     };
   },
-  props: ["setCurrentId","role", "changeRole", "add"],
+  inject:["setCurrentId"],
+  props: ["role", "changeRole", "add"],
   methods: {
 
     showAlert(param) {
@@ -96,7 +97,7 @@ export default {
           return result.json();
         })
         .then((reponse) => {
-          if (reponse == true) {
+          if (reponse == !false) {
             
             this.changeRole("admin");
             this.$router.push("/Admin");
@@ -112,8 +113,8 @@ export default {
           return result.json();
         })
         .then((reponse) => {
-          if (reponse === true) {
-            this.setCurrentId(Math.random().toString(32))
+          if (reponse) {
+            this.setCurrentId(reponse.id)
             this.changeRole("user");
             this.$router.push("/User");
           }
