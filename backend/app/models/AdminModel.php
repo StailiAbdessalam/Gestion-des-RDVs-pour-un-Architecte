@@ -11,11 +11,18 @@ class AdminModel
     }
     public function selectAll()
     {
+        
         $conn = $this->db;
         $requi = "SELECT * FROM `admin`";
         $stm = $conn->prepare($requi);
         $stm->execute();
         $result = $stm->fetchAll(PDO::FETCH_ASSOC);
         return $result;
+    }
+    public function remove($id){
+        $conn = $this->db;
+        $requet = "DELETE FROM `utilisateur` WHERE id= $id";
+        $stmn = $conn->prepare($requet);
+        return $stmn->execute();
     }
 }

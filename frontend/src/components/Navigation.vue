@@ -17,7 +17,6 @@
       >
       <!-- <router-link  class="nav-item" to="/"> -->
       <!-- <form   action="\" > -->
-      <a id="hah" href="\" class="nav-item"><input v-if="role"  type="submit" value="Log out"/></a>
       <!-- </form> -->
       
       <!-- </router-link> -->
@@ -29,6 +28,8 @@
         alt="Current profile photo"
       />
       abdessalam staili
+            <a id="hah" href="\" v-if="role" class="nav-item">logout</a>
+
     </div>
   </nav>
 </template>

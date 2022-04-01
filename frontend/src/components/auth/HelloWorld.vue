@@ -86,7 +86,7 @@ export default {
 
     showAlert(param) {
       // Use sweetalert2
-      this.$swal(param);
+      this.$swal("Here is your reference id: " +param);
     },
     checkAdmin() {
       fetch("http://localhost/BRIEFS_6/Admin/index", {
