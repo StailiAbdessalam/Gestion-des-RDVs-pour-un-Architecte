@@ -30,7 +30,7 @@ class UserModel
     public function remove($id)
     {
         $conn = $this->db;
-        $requi = "DELETE FROM `utilisateur` WHERE id=" . $id;
+        $requi = "DELETE FROM `utilisateur` WHERE id=$id";
         $stm = $conn->prepare($requi);
         $stm->execute();
     }

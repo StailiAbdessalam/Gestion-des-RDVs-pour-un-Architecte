@@ -21,7 +21,7 @@ class RDVModel
     public function remove($id)
     {
         $conn = $this->db;
-        $requi = "DELETE FROM `reservation` WHERE id=" . $id;
+        $requi = "DELETE FROM `reservation` WHERE id=$id";
         $stm = $conn->prepare($requi);
         $stm->execute();
     }
