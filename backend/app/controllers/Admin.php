@@ -28,9 +28,6 @@ class Admin extends Controller
                 }
             }
             echo json_encode($this->valide);
-            
-
-            
         }
     }
 

@@ -12,7 +12,8 @@ export default {
   components: { Navigation },
   data() {
     return {
-      role: ""
+      role: "",
+      id:""
     }
   },
   methods: {

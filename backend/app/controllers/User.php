@@ -33,4 +33,11 @@ class User extends Controller
   {
     echo "register hi ";
   }
+
+  public function getAllRDV(){
+    $user = $this->model('RDVModel');
+    $users = $user->selectAll($_GET['id']);
+    echo json_encode($users);
+     
+  }
 }

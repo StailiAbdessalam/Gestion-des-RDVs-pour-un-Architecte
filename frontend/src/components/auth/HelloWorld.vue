@@ -61,6 +61,8 @@ export default {
     return {
       form: true,
       PIN: "",
+      Nom: "",
+    
     };
   },
   props: ["role", "changeRole"],
@@ -76,8 +78,11 @@ export default {
       }).then(result => { return result.json() })
         .then(reponse => {
           if (reponse == true) {
+
+            this.Nom = reponse
             this.changeRole('admin');
             this.$router.push('/Admin')
+            
           }
         })
     },
@@ -88,6 +93,7 @@ export default {
       }).then(result => { return result.json() })
         .then(reponse => {
           if (reponse === true) {
+            this.id=reponse.id;
             this.changeRole('user');
             this.$router.push('/User')
           }

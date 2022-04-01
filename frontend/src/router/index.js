@@ -3,7 +3,7 @@ import HomeView from '../view/HomeUser.vue'
 
 const routes = [
   {
-    path: '/User',
+    path: '/User/RDV',
     name: 'home',
     component: HomeView
   },
@@ -16,10 +16,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../view/Auth.vue')
   },
   {
-    path: '/OldRdv',
+    path: '/User',
     name: 'Error404',
 
-    component: () => import( /* webpackChunkName: "about" */ '../view/OldRdv.vue')
+    component: () => import( /* webpackChunkName: "about" */ '../view/OldRDV.vue')
   },
   {
     path: '/Admin',
