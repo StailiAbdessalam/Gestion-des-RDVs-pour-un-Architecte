@@ -5,7 +5,7 @@
         <div class="formContent" v-if="form">
           <form @submit.prevent action method>
             <input
-              class=" w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
+              class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
               type="text"
               name="pin"
               id="PIN"
@@ -34,15 +34,19 @@
         </div>
         <div class="formContetTwo" v-if="!form">
           <form>
-            <input type="text" placeholder="Full name" />
-            <input type="number" placeholder="Age" />
-            <input type="text" placeholder="Profession" />
-            <input type="text" placeholder="CIN" />
+            <input type="text" v-model="registreForm.Nom" placeholder="Nom" />
+            <input
+              type="text"
+              v-model="registreForm.Prenom"
+              placeholder="Prenom"
+            />
+            <input type="number" v-model="registreForm.Age" placeholder="Age" />
+            <input type="text" v-model="registreForm.CIN" placeholder="CIN" />
             <input
               type="button"
               class="hgjd bg-sky-600 hover:bg-sky-700"
               value="Submit"
-              @click="showAlert()"
+              @click="addUser()"
             />
             <a href="#" v-on:click="form = !form">
               <br />Already have an account?
@@ -60,45 +64,68 @@ export default {
   data() {
     return {
       form: true,
+      registreForm: {
+        Nom: "",
+        Prenom: "",
+        Age: "",
+        CIN: "",
+      },
       PIN: "",
-      Nom: "",
-    
     };
   },
-  props: ["role", "changeRole"],
+  props: ["role", "changeRole", "add"],
   methods: {
     showAlert() {
       // Use sweetalert2
-      this.$swal('Hello Vue world!!!');
+      this.$swal("Hello Vue world!!!");
     },
     checkAdmin() {
       fetch("http://localhost/BRIEFS_6/Admin/index", {
         method: "POST",
-        body: JSON.stringify(this.PIN)
-      }).then(result => { return result.json() })
-        .then(reponse => {
-          if (reponse == true) {
-
-            this.Nom = reponse
-            this.changeRole('admin');
-            this.$router.push('/Admin')
-            
-          }
+        body: JSON.stringify(this.PIN),
+      })
+        .then((result) => {
+          return result.json();
         })
+        .then((reponse) => {
+          if (reponse == true) {
+            this.Nom = reponse;
+            this.changeRole("admin");
+            this.$router.push("/Admin");
+          }
+        });
     },
     checkUser() {
       fetch("http://localhost/BRIEFS_6/User/index", {
         method: "POST",
-        body: JSON.stringify(this.PIN)
-      }).then(result => { return result.json() })
-        .then(reponse => {
-          if (reponse === true) {
-            this.id=reponse.id;
-            this.changeRole('user');
-            this.$router.push('/User')
-          }
+        body: JSON.stringify(this.PIN),
+      })
+        .then((result) => {
+          return result.json();
         })
-    }
+        .then((reponse) => {
+          if (reponse === true) {
+            this.id = reponse.id;
+            this.changeRole("user");
+            this.$router.push("/User");
+          }
+        });
+    },
+    addUser() {
+      fetch("http://localhost/BRIEFS_6/User/register", {
+        method: "POST",
+        body: JSON.stringify(this.registreForm),
+      })
+        .then((result) => {
+          return result.json();
+        })
+        .then((data) => {
+          if (data) {
+            this.showAlert();
+          }
+          // this.add(data);
+        });
+    },
   },
 };
 </script>
@@ -113,7 +140,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.hgjd{
+.hgjd {
   color: aliceblue;
   border-radius: 3px;
 }

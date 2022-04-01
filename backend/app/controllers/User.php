@@ -31,8 +31,16 @@ class User extends Controller
 
   public function register()
   {
-    echo "register hi ";
-  }
+    $CreateAcc = $this->model('UserModel');
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+      $json = file_get_contents('php://input');
+      $data = json_decode($json);
+      $data = array_values((array)$data);
+      $created = $CreateAcc->insert($data);
+      if($created){
+        echo json_encode("nice");
+      }
+    }  }
 
   public function getAllRDV(){
     $user = $this->model('RDVModel');
