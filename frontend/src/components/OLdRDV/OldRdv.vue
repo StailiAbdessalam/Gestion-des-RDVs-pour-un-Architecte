@@ -24,6 +24,7 @@
                     </div>
                   </div>
                 </td>
+                
                 <td class="px-4 py-3 text-ms font-semibold border">ch7al ba9i we9t</td>
                 <td class="px-4 py-3 text-xs border">
                   <span

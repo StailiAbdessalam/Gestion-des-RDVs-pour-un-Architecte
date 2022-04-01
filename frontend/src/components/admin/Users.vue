@@ -66,6 +66,7 @@
                 <td class="px-4 py-3 text-sm border">{{ user.CIN }}</td>
                 <td class="px-4 py-3 text-sm border">
                   <a href="" @click="deleteUser(user.id)">Delete</a>
+                  
                 </td>
               </tr>
             </tbody>

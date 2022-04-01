@@ -11,6 +11,7 @@ class AdminModel
     }
     public function selectAll()
     {
+        
         $conn = $this->db;
         $requi = "SELECT * FROM `admin`";
         $stm = $conn->prepare($requi);
