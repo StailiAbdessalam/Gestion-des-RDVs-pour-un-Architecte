@@ -44,9 +44,9 @@ class UserModel
     // }
     public function insert($data){
         $conn = $this->db;
-        $requet = "INSERT INTO `utilisateur`(`Nom`, `Prenom`, `Age`, `CIN`, `Reference_unique`) VALUES (?,?,?,?,?)";
+        $requet = "INSERT INTO `utilisateur`(`Nom`, `Prenom`, `Age`,`Job`, `CIN`, `Reference_unique`) VALUES (?,?,?,?,?,?)";
         $stmn = $conn->prepare($requet);
-        return $stmn->execute([$data[0],$data[1],$data[2],$data[3],uniqid()]);
+        return $stmn->execute([$data[0],$data[1],$data[2],$data[3],$data[4],uniqid()]);
     }
     public function Updat($data, $id)
     {

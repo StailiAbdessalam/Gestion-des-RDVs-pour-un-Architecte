@@ -13,6 +13,7 @@
                 <th class="px-4 py-3">Age</th>
                 <th class="px-4 py-3">Status</th>
                 <th class="px-4 py-3">CIN</th>
+                <th class="px-4 py-3">Action</th>
               </tr>
             </thead>
             <tbody class="bg-white">
@@ -39,9 +40,10 @@
                   <h3>{{user.Job}}</h3>
                   <!-- <span
                     class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"
-                  >Acceptable</span> -->
+                  >profession</span> -->
                 </td>
                 <td class="px-4 py-3 text-sm border">{{user.CIN}}</td>
+                <td class="px-4 py-3 text-sm border"><a href="">Delete</a> &nbsp; <a href="">Update</a></td>
               </tr>
               
             </tbody>

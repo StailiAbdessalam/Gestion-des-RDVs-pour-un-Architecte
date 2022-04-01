@@ -37,15 +37,17 @@ class User extends Controller
       $data = json_decode($json);
       $data = array_values((array)$data);
       $created = $CreateAcc->insert($data);
-      if($created){
+      if ($created) {
         echo json_encode("nice");
       }
-    }  }
+    }
+  }
+  
 
-  public function getAllRDV(){
+  public function getAllRDV()
+  {
     $user = $this->model('RDVModel');
     $users = $user->selectAll($_GET['id']);
     echo json_encode($users);
-     
   }
 }
