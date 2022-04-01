@@ -17,7 +17,7 @@ const routes = [
   },
   {
     path: '/User',
-    name: 'OLD',
+    name: 'OLD  ',
 
     component: () => import( /* webpackChunkName: "about" */ '../view/OldRDV.vue')
   },

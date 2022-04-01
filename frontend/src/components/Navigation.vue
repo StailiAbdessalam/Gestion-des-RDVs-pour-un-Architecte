@@ -18,9 +18,7 @@
       >
       <!-- <router-link  class="nav-item" to="/"> -->
       <!-- <form   action="\" > -->
-      <a href="\">
-        <input v-if="role" class="nav-item" type="submit" value="Log out"
-      /></a>
+      <a id="hah" href="\" class="nav-item"><input v-if="role"  type="submit" value="Log out"/></a>
       <!-- </form> -->
       <!-- </router-link> -->
     </div>
@@ -49,6 +47,9 @@ export default {
   justify-content: center;
   align-items: center;
   margin-top: 6px;
+}
+#hah{
+
 }
 nav {
   color: white;
