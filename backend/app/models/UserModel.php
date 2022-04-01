@@ -40,6 +40,9 @@ class UserModel
     //     $conn = $this->db;
     //     $requi = "INSERT INTO `utilisateur` (" . getval($data) . ") VALUES (" . getPlaceholders($data) . ")";
     //     $stm = $conn->prepare($requi);
+
+       
+    
     //     $stm->execute($data);
     // }
     public function insert($data){
