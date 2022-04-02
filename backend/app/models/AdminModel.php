@@ -21,7 +21,7 @@ class AdminModel
     }
     public function remove($id){
         $conn = $this->db;
-        $requet = "DELETE FROM `utilisateur` WHERE id=$id";
+        $requet = "DELETE FROM `utilisateur` WHERE id=".$id;
         $stmn = $conn->prepare($requet);
         return $stmn->execute();
     }

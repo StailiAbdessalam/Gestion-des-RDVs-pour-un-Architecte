@@ -49,7 +49,7 @@
                 </td>
                 <td class="px-4 py-3 text-sm border">{{ user.CIN }}</td>
                 <td class="px-4 py-3 text-sm border">
-                  <a href @click="deleteUser(user.id)">Delete</a>
+                  <a class="dlete" @click="deleteUser(user.id)">Delete</a>
                 </td>
               </tr>
             </tbody>
@@ -78,6 +78,7 @@ export default {
         })
         .then((reponse) => {
           this.Alluser = reponse;
+
         });
     },
 
@@ -85,16 +86,12 @@ export default {
       fetch(
         `http://localhost/BRIEFS_6/admin/DELETEUSER?id=${id}`,
         {
-          method: "delete",
+          method: "DELETE"
         }
       )
-        .then((result) => {
-          return result.json();
+        .then(() => {
+          this.GetAllUser();
         })
-        .then((reponse) => {
-          // this.Alluser(reponse);
-          console.log(reponse);
-        });
     },
   }, mounted() {
     this.GetAllUser();
@@ -104,4 +101,7 @@ export default {
 </script>
 
 <style>
+.dlete{
+  cursor: pointer;
+}
 </style>

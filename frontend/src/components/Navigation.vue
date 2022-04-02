@@ -22,12 +22,12 @@
       <!-- </router-link> -->
     </div>
     <div class="shrink-0 flex items-center gap-2">
-      <img
+      <!-- <img
         class="h-14 w-14 object-cover rounded-full"
         src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1361&q=80"
         alt="Current profile photo"
-      />
-      abdessalam staili
+      /> -->
+      <!-- abdessalam staili -->
             <a id="hah" href="\" v-if="role" class="nav-item">logout</a>
 
     </div>

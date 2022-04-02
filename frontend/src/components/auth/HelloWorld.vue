@@ -21,7 +21,7 @@
               />
               <input
                 type="submit"
-                 value="as admin"
+                value="as admin"
                 class="hgjd bg-sky-600 hover:bg-sky-700"
                 @click="checkAdmin()"
               />
@@ -35,24 +35,18 @@
         <div class="formContetTwo" v-if="!form">
           <form>
             <input type="text" v-model="registreForm.Nom" placeholder="Nom" />
-            <input
-              type="text"
-              v-model="registreForm.Prenom"
-              placeholder="Prenom"
-            />  
+            <input type="text" v-model="registreForm.Prenom" placeholder="Prenom" />
             <input type="number" v-model="registreForm.Age" placeholder="Age" />
-            <input
-              type="TEXT"
-              v-model="registreForm.Job"
-              placeholder="profession"
-            />
+            <input type="TEXT" v-model="registreForm.Job" placeholder="profession" />
             <input type="text" v-model="registreForm.CIN" placeholder="CIN" />
-            <input
-              type="button"
-              class="hgjd bg-sky-600 hover:bg-sky-700"
-              value="Submit"
-              @click="addUser()"
-            />
+            <!-- <a href> -->
+              <input
+                type="button"
+                class="hgjd bg-sky-600 hover:bg-sky-700"
+                value="Submit"
+                @click="addUser()"
+              />
+            <!-- </a> -->
             <a href="#" v-on:click="form = !form">
               <br />Already have an account?
             </a>
@@ -77,16 +71,17 @@ export default {
         CIN: "",
       },
       PIN: "",
-      Reference_unique : true,
+      Reference_unique: true,
     };
   },
-  inject:["setCurrentId"],
+  inject: ["setCurrentId"],
   props: ["role", "changeRole", "add"],
   methods: {
 
     showAlert(param) {
       // Use sweetalert2
-      this.$swal("Here is your reference id: " +param);
+      this.$swal("Here is your reference id: " + param);
+
     },
     checkAdmin() {
       fetch("http://localhost/BRIEFS_6/Admin/index", {
@@ -98,7 +93,7 @@ export default {
         })
         .then((reponse) => {
           if (reponse == !false) {
-            
+
             this.changeRole("admin");
             this.$router.push("/Admin");
           }
@@ -131,6 +126,9 @@ export default {
         .then((data) => {
           if (data) {
             this.showAlert(data[5]);
+            // this.$router.push("/");
+            this.form = !this.form
+
           }
           // this.add(data);
         });
@@ -144,7 +142,7 @@ export default {
 @import "../../assets/style/helloWord.css";
 .hello {
   /* background-image: url(../../assets/img/pexels-thirdman-5582599.jpg); */
-  height: 100vh;
+  height: 80vh;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
