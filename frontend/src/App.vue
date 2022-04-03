@@ -7,15 +7,8 @@
 
 <script>
 import Navigation from "./components/Navigation.vue";
-import {computed} from 'vue'
 export default {
   name: "App",
-  provide() {
-    return {
-      setCurrentId:this.setCurrentId,
-      id: computed(() => this.id),
-    }
-  },
   components: { Navigation },
   data() {
     return {
@@ -24,9 +17,6 @@ export default {
     }
   },
   methods: {
-     setCurrentId(id) {
-      this.id = id
-    },
     changeRole(newRole) {
       this.role = newRole;
     }

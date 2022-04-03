@@ -17,7 +17,7 @@ const routes = [
   },
   {
     path: '/User',
-    name: 'OLD  ',
+    name: 'OLD ',
 
     component: () => import( /* webpackChunkName: "about" */ '../view/OldRDV.vue')
   },
@@ -26,6 +26,13 @@ const routes = [
     name: 'admin',
 
     component: () => import(/* webpackChunkName: "about" */ '../view/Dashboerd.vue')
+
+  },  
+  {
+    path: '/ALLRDV',
+    name: 'allRDV',
+
+    component: () => import(/* webpackChunkName: "about" */ '../view/AllRDV.vue')
 
   },
 

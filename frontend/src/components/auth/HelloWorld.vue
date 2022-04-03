@@ -40,12 +40,12 @@
             <input type="TEXT" v-model="registreForm.Job" placeholder="profession" />
             <input type="text" v-model="registreForm.CIN" placeholder="CIN" />
             <!-- <a href> -->
-              <input
-                type="button"
-                class="hgjd bg-sky-600 hover:bg-sky-700"
-                value="Submit"
-                @click="addUser()"
-              />
+            <input
+              type="button"
+              class="hgjd bg-sky-600 hover:bg-sky-700"
+              value="Submit"
+              @click="addUser()"
+            />
             <!-- </a> -->
             <a href="#" v-on:click="form = !form">
               <br />Already have an account?
@@ -74,7 +74,6 @@ export default {
       Reference_unique: true,
     };
   },
-  inject: ["setCurrentId"],
   props: ["role", "changeRole", "add"],
   methods: {
 
@@ -109,8 +108,8 @@ export default {
         })
         .then((reponse) => {
           if (reponse) {
-            this.setCurrentId(reponse.id)
             this.changeRole("user");
+            localStorage.setItem("id", reponse.id);
             this.$router.push("/User");
           }
         });
