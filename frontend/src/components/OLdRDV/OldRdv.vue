@@ -61,8 +61,6 @@ export default {
     }).then(result => { return result.json() })
       .then(reponse => {
         this.Rdvuser = reponse;
-        console.log(reponse);
-        console.table(this.Rdvuser);
       })
   },
 
