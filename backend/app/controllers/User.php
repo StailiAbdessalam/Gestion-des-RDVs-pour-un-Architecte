@@ -59,4 +59,18 @@ class User extends Controller
     $selected = $select->selectAll();
     echo json_encode($selected);
   }
+
+  public function addAppointment(){
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+      $addApp = $this->model('RDVModel');
+      $json = file_get_contents('php://input');
+      $data = json_decode($json);
+      $data = array_values((array)$data);
+      $created = $addApp->insertRDV($data);
+      echo json_encode($created);
+      // if ($created) {
+      //   echo json_encode($data);
+      // }
+    }
+  }
 }

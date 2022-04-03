@@ -12,8 +12,8 @@ class RDVModel
     public function selectAll($id)
     {
         $conn = $this->db;
-        $requi = "SELECT * FROM `reservation` where id_utilisateur=$id";
-        $stm = $conn->prepare($requi);
+        $requete  = "SELECT * FROM `reservation` where id_utilisateur=$id";
+        $stm = $conn->prepare($requete);
         $stm->execute();
         $result = $stm->fetchAll(PDO::FETCH_ASSOC);
         return $result;
@@ -21,19 +21,21 @@ class RDVModel
     public function remove($id)
     {
         $conn = $this->db;
-        $requi = "DELETE FROM `reservation` WHERE id=$id";
-        $stm = $conn->prepare($requi);
+        $requete  = "DELETE FROM `reservation` WHERE id=$id";
+        $stm = $conn->prepare($requete);
         $stm->execute();
     }
 
-    public function insertRDV($data){
+    public function insertRDV($data)
+    {
         $conn = $this->db;
-        $requi = "INSERT INTO `reservation`(`id_user`,`sujet`, `date`, `creneau`) VALUES (:id_user,:sujet,:date,:creneau)";
-        $stm = $conn->prepare($requi);
-        $stm->bindParam(':id_user', $_POST['id_user']);
-        $stm->bindParam(':sujet', $_POST['sujet']);
-        $stm->bindParam(':date', $_POST['date']);
-        $stm->bindParam(':creneau', $_POST['creneau']);
-        $stm->execute();
+        $requete  = "INSERT INTO `reservation`(`id_utilisateur`,`Sujet`, `date`, `creneau`) VALUES (?,?,?,?)";
+        $stm = $conn->prepare($requete);
+        // $stm->bindParam(':Sujet', $data['Sujet']);
+        // $stm->bindParam(':date', $data['date']);
+        // $stm->bindParam(':creneau', $data['creneau']);
+        // $stm->bindParam(':id_utilisateur', $data['id_utilisateur']);
+        $result = $stm->execute($data);
+        return $result;
     }
 }

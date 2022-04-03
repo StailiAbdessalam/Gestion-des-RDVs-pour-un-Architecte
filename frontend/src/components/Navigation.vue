@@ -49,9 +49,6 @@ export default {
   align-items: center;
   margin-top: 6px;
 }
-#hah{
-
-}
 nav {
   color: white;
   background-color: #0284c7;
