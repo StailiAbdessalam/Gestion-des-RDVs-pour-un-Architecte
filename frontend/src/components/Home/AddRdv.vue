@@ -7,7 +7,10 @@
     </header>
     <div class="flex justify-center">
       <div class="w-3/5">
-        <form class="bg-white p-10 rounded-lg shadow-lg min-w-full" @submit.prevent>
+        <form
+          class="bg-white p-10 rounded-lg shadow-lg min-w-full"
+          @submit.prevent
+        >
           <h1
             class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans"
           >
@@ -60,6 +63,7 @@
                 focus:outline-none
                 mb-4
               "
+              name="creneau"
               v-model="RDVform.creneau"
             >
               <option disabled selected>
@@ -105,10 +109,9 @@ export default {
       })
         .then((result) => {
           return result.json();
-          
         })
         .then((data) => {
-          if(data){
+          if (data) {
             this.$router.push("/User");
           }
         });

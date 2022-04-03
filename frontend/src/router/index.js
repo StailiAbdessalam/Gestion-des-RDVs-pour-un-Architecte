@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../view/HomeUser.vue'
+import AddRDVp from '../view/AddRdvV.vue'
 
 const routes = [
   {
     path: '/User/RDV',
     name: 'home',
-    component: HomeView
+    component: AddRDVp
   },
   {
     path: '/',
@@ -33,6 +33,13 @@ const routes = [
     name: 'allRDV',
 
     component: () => import(/* webpackChunkName: "about" */ '../view/AllRDV.vue')
+
+  },
+  {
+    path: '/home',
+    name: 'HomeP',
+
+    component: () => import(/* webpackChunkName: "about" */ '../view/Home.vue')
 
   },
 

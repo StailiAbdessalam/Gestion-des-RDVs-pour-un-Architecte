@@ -7,6 +7,9 @@
       <router-link v-if="!role" class="nav-item" to="/"
         >Authentication</router-link
       >
+      <router-link  class="nav-item" to="/home"
+        >Home</router-link
+      >
       <template v-if="role === 'user'">
         <router-link class="nav-item" to="/User/RDV">Rendez-vous</router-link>
         <router-link class="nav-item" to="/User"
@@ -40,7 +43,7 @@ export default {
   data() {
     return {
       role: "",
-    }
+    };
   },
   mounted() {
     this.rolll();
@@ -53,8 +56,8 @@ export default {
     rolll() {
       this.role = localStorage.getItem("role");
       console.log(this.role);
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

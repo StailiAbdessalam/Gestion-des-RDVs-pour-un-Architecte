@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "daisyui": "^2.13.6",
     "sweetalert2": "^11.4.8"
   }
 }

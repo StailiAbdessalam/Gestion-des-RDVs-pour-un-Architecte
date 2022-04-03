@@ -1,15 +1,15 @@
 <template>
   <div>
     <br>
-    <HelloWorld />
+    <AuthC />
   </div>
 </template>
 
 <script>
-import HelloWorld from "../components/auth/HelloWorld.vue"
+import AuthC from "../components/auth/AutoC.vue"
 export default {
   name:"AuthView",
-  components: { HelloWorld },
+  components: { AuthC },
   inject:["setCurrentId"],
   props: ["role", "changeRole" ,"id"]
 };
