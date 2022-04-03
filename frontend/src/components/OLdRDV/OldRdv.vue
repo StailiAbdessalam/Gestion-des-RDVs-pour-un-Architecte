@@ -68,7 +68,6 @@ export default {
   },
   mounted() {
   },
-
   methods: {
     getAllRDV() {
       fetch(`http://localhost/BRIEFS_6/User/getAllRDV?id='${this.id}'`, {
@@ -77,7 +76,6 @@ export default {
         .then(reponse => {
           console.log(reponse);
           this.AllRDV = reponse
-          
         })
     }
   },

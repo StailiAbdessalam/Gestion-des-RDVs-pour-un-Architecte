@@ -1,4 +1,4 @@
-<?php
+ <?php
 require_once APPROOT . '/config/config.php';
 require_once APPROOT . "../config/Function.php";
 class RDVModel
