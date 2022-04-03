@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Navigation :role="role" />
-    <router-view :changeRole="changeRole" :role="role" />
+    <Navigation />
+    <router-view  />
   </div>
 </template>
 

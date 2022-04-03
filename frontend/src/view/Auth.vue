@@ -1,7 +1,7 @@
 <template>
   <div>
     <br>
-    <HelloWorld :role="role" :changeRole="changeRole" />
+    <HelloWorld />
   </div>
 </template>
 

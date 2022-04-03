@@ -92,8 +92,7 @@ export default {
         })
         .then((reponse) => {
           if (reponse == !false) {
-
-            this.changeRole("admin");
+            localStorage.setItem("role","admin");
             this.$router.push("/Admin");
           }
         });
@@ -108,8 +107,8 @@ export default {
         })
         .then((reponse) => {
           if (reponse) {
-            this.changeRole("user");
             localStorage.setItem("id", reponse.id);
+            localStorage.setItem("role", "user");
             this.$router.push("/User");
           }
         });

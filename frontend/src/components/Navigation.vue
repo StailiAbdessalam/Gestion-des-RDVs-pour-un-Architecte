@@ -28,7 +28,7 @@
         alt="Current profile photo"
       /> -->
       <!-- abdessalam staili -->
-            <a id="hah" href="\" v-if="role" class="nav-item">logout</a>
+            <a id="hah" href="\" v-if="role" @click="logout()"  class="nav-item">logout</a>
 
     </div>
   </nav>
@@ -36,7 +36,25 @@
 <script>
 export default {
   name: "nav-item",
-  props: ["role"],
+  // props: ["role"],
+  data() {
+    return {
+      role: "",
+    }
+  },
+  mounted() {
+    this.rolll();
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem("role");
+      this.$router.push("/");
+    },
+    rolll() {
+      this.role = localStorage.getItem("role");
+      console.log(this.role);
+    }
+  }
 };
 </script>
 <style>
@@ -49,8 +67,7 @@ export default {
   align-items: center;
   margin-top: 6px;
 }
-#hah{
-
+#hah {
 }
 nav {
   color: white;

@@ -93,7 +93,8 @@ export default {
           this.GetAllUser();
         })
     },
-  }, mounted() {
+  }, 
+  mounted() {
     this.GetAllUser();
   }
 
