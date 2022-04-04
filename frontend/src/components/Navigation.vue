@@ -72,7 +72,7 @@ export default {
 }
 nav {
   color: white;
-  background-color: #0284c7;
+  background-color: #0ea5e9;
   display: flex;
   justify-content: space-between;
   padding: 20px 7em;
