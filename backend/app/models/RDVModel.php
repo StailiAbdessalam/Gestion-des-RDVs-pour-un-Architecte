@@ -38,4 +38,11 @@ class RDVModel
         $result = $stm->execute($data);
         return $result;
     }
+
+    public function deleteRDV($id){
+        $conn = $this->db;
+        $requet = "DELETE FROM `reservation` WHERE id=".$id;
+        $stmn = $conn->prepare($requet);
+        return $stmn->execute();
+    }
 }

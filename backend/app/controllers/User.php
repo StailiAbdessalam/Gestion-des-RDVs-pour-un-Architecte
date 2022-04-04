@@ -73,4 +73,10 @@ class User extends Controller
       // }
     }
   }
+  public function remove(){
+    if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
+      $deleteRDV = $this->model('RDVModel');
+      $deleteRDV->deleteRDV($_GET['id']);
+    }
+  }
 }
