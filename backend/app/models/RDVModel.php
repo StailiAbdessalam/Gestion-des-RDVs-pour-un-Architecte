@@ -38,4 +38,9 @@ class RDVModel
         $result = $stm->execute($data);
         return $result;
     }
+
+    public function updateRDV(){
+        $conn= $this->db;
+        $query = "";
+    }
 }
