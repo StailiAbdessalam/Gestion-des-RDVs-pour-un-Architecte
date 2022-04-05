@@ -25,7 +25,6 @@ const routes = [
   {
     path: "/Admin",
     name: "admin",
-
     component: () =>
       import(/* webpackChunkName: "about" */ "../view/Dashboerd.vue"),
   },

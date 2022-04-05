@@ -6,15 +6,7 @@
           <table class="w-full">
             <thead>
               <tr
-                class="
-                  text-md
-                  font-semibold
-                  tracking-wide
-                  text-left text-gray-900
-                  bg-gray-100
-                  uppercase
-                  border-b border-gray-600
-                "
+                class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600"
               >
                 <th class="px-4 py-3">Sujet</th>
                 <th class="px-4 py-3">creneau</th>
@@ -40,10 +32,10 @@
                 <td class="px-4 py-3 text-sm border">{{ rdv.date }}</td>
                 <td class="px-4 py-3 text-sm border">
                   <a @click="DeleteRDV(rdv.id)" class="text-[#FF0000]">Delete</a> &nbsp;
-                  <a class="text-[#088F8F]">Edit</a>
+                  <a @click="getRdv(rdv.id)" class="text-[#088F8F]">Edit</a>
                 </td>
                 <td class="px-4 py-3 text-sm border">
-                  <a class="text-[#0096FF]">{{rdv.chrono}}</a>
+                  <a class="text-[#0096FF]">{{ rdv.chrono }}</a>
                 </td>
               </tr>
             </tbody>
@@ -51,7 +43,13 @@
         </div>
       </div>
     </section>
-    <UpdateRDV class="popap" :idToUpdate="idToUpdate" @close="close" @getAllRDV="getAllRDV" v-if="!popRdvF" />
+    <UpdateRDV
+      class="popap"
+      :idToUpdate="idToUpdate"
+      @close="close"
+      @getAllRDV="getAllRDV"
+      v-if="!popRdvF"
+    />
   </div>
 </template>
 
@@ -70,11 +68,11 @@ export default {
       chrono: [],
       popRdv: {},
       popRdvF: true,
-      idToUpdate :""
+      idToUpdate: ""
     };
   },
   methods: {
-    close(){
+    close() {
       this.popRdvF = !this.popRdvF
     },
     getAllRDV() {
@@ -90,13 +88,22 @@ export default {
           reponse.forEach((element) => {
             let eleme = element.date;
             console.log(eleme);
-            const deff = intervalToDuration({end:this.today,start:new Date (eleme)});
+            const deff = intervalToDuration({ end: this.today, start: new Date(eleme) });
             // console.log(deff);
             element["chrono"] = deff;
-            
+
           });
 
         });
+    },
+    check() {
+      if (localStorage.getItem('role') === null) {
+        this.$router.push('/');
+      } else if (localStorage.getItem('role') === 'admin') {
+        this.$router.push('/admin');
+      } else {
+        this.$router.push('/User');
+      }
     },
     // updateChrono() {
     //   this.list.forEach((v, i) => {
@@ -142,6 +149,7 @@ export default {
     //   this.updateChrono();
     // }, 1000);
     this.getAllRDV();
+    this.check();
   },
 };
 </script>
