@@ -12,7 +12,7 @@
                 <th class="px-4 py-3">creneau</th>
                 <th class="px-4 py-3">Date</th>
                 <th class="px-4 py-3">Action</th>
-                <th class="px-4 py-3">download</th>
+                <th class="px-4 py-3">Chrono</th>
               </tr>
             </thead>
             <tbody class="bg-white">
@@ -35,7 +35,7 @@
                   <a class="text-[#088F8F]">Edit</a>
                 </td>
                 <td class="px-4 py-3 text-sm border">
-                  <a class="text-[#0096FF]">download</a>
+                  <a class="text-[#0096FF]">{{chrono}}</a>
                 </td>
               </tr>
             </tbody>
@@ -47,12 +47,15 @@
 </template>
 
 <script>
+import moment from "moment";
 export default {
   name: "Contact-us",
   data() {
     return {
       Rdvuser: {},
       id: "",
+      chrono:moment().format('MMMM Do YYYY, h:mm:ss a'),
+      RDVdt: "",
     };
   },
   methods: {
@@ -79,7 +82,7 @@ export default {
       // .then((reponse) => {
       //   this.Rdvuser = reponse;
       // });
-    }
+    },
   },
   mounted() {
     this.getAllRDV();

@@ -1,27 +1,18 @@
 <template>
   <div>
     <header class="hero">
-      <h1 class="text-center text-3xl mb-6 text-gray-600 font-bold font-sans">
-        OFREZ-VOUS LE LUXE DE L'ARCHITECTURE
-      </h1>
+      <h1
+        class="text-center text-3xl mb-6 text-gray-600 font-bold font-sans"
+      >OFREZ-VOUS LE LUXE DE L'ARCHITECTURE</h1>
     </header>
     <div class="flex justify-center">
       <div class="w-3/5">
-        <form
-          class="bg-white p-10 rounded-lg shadow-lg min-w-full"
-          @submit.prevent
-        >
+        <form class="bg-white p-10 rounded-lg shadow-lg min-w-full" @submit.prevent>
           <h1
             class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans"
-          >
-            Prendre un rendez-vous
-          </h1>
+          >Prendre un rendez-vous</h1>
           <div>
-            <label
-              class="text-left text-gray-800 font-semibold block my-3"
-              for="Sujet"
-              >Sujet :</label
-            >
+            <label class="text-left text-gray-800 font-semibold block my-3" for="Sujet">Sujet :</label>
             <input
               class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
               type="textarea"
@@ -35,9 +26,9 @@
             <label
               class="text-left text-gray-800 font-semibold block my-3 text-md"
               for="date"
-              >Date :</label
-            >
+            >Date :</label>
             <input
+            @change="checkhour"
               class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
               type="date"
               name="date"
@@ -46,34 +37,18 @@
               id="date"
             />
           </div>
-          <div>
+          <div v-if="RDVform.date">
             <label
               class="text-left text-gray-800 font-semibold block my-3 text-md"
               for="date"
-              >Créneaux:</label
-            >
+            >Créneaux:</label>
             <select
-              class="
-                select select-bordered
-                w-full
-                bg-gray-100
-                px-4
-                py-2
-                rounded-lg
-                focus:outline-none
-                mb-4
-              "
+              class="select select-bordered w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none mb-4"
               name="creneau"
               v-model="RDVform.creneau"
             >
-              <option disabled selected>
-                Choisissez l'heure à laquelle vous aimeriez vous rencontrer
-              </option>
-              <option>10 h à 10:30h</option>
-              <option>11 h à 11:30h</option>
-              <option>14 h à 14:30h</option>
-              <option>15 h à 15:30h</option>
-              <option>16 h à 16:30h</option>
+              <option disabled selected>Choisissez l'heure à laquelle vous aimeriez vous rencontrer</option>
+              <option v-for="hor in hour" :key="hor">{{hor}}</option>
             </select>
           </div>
           <input
@@ -89,6 +64,9 @@
 </template>
 
 <script>
+// if (this.RDVform.date) {
+//   this.checkhour();
+// }
 export default {
   name: "hafidH",
   data() {
@@ -99,6 +77,7 @@ export default {
         date: "",
         creneau: "",
       },
+      hour: [],
     };
   },
   methods: {
@@ -116,6 +95,17 @@ export default {
           }
         });
     },
+    checkhour() {
+      fetch(`http://localhost/BRIEFS_6/User/selectInDate?date="${this.RDVform.date}"`, {
+        method: "GET",
+      })
+        .then((result) => {
+          return result.json();
+        })
+        .then((data) => {
+          this.hour = data;
+        });
+    }
   },
 };
 </script>

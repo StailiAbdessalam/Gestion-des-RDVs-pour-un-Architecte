@@ -45,4 +45,12 @@ class RDVModel
         $stmn = $conn->prepare($requet);
         return $stmn->execute();
     }
+    public function slectcreneau($date){
+        $conn = $this->db;
+        $requete  = "SELECT creneau FROM `reservation` where date=$date";
+        $stm = $conn->prepare($requete);
+        $stm->execute();
+        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
