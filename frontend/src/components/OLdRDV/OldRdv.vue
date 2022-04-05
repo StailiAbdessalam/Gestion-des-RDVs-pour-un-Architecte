@@ -52,10 +52,10 @@
                   >
                   &nbsp;
                   <!-- <router-link :to="{name:'Update' , params:{id:RDVone.id}}"  class="text-[#088F8F]">Edit</router-link> -->
-                  <a @click="getRdv(RDVone.id)" class="text-[#088F8F]">Edit</a>
+                  <a @click="getRdv(RDVone.id)" class="text-[#088F8F]" > Edit</a>
                 </td>
                 <td class="px-4 py-3 text-sm border">
-                  <a class="text-[#0096FF]">{{chrono}}</a>
+                  <a class="text-[#0096FF]">{{ chrono }}</a>
                 </td>
               </tr>
             </tbody>
@@ -63,24 +63,31 @@
         </div>
       </div>
     </section>
-    
+    <UpdateRDV class="popap" :idToUpdate="idToUpdate" @close="close" @getAllRDV="getAllRDV" v-if="!popRdvF" />
   </div>
 </template>
 
 <script>
 import moment from "moment";
+import UpdateRDV from "../Home/UpdateRdv.vue";
 export default {
+  components: { UpdateRDV },
   name: "Contact-us",
   data() {
     return {
       Rdvuser: {},
       id: "",
       popRdv: {},
-      chrono:moment().format('MMMM Do YYYY, h:mm:ss a'),
+      chrono: moment().format("MMMM Do YYYY, h:mm:ss a"),
       RDVdt: "",
+      popRdvF: true,
+      idToUpdate :""
     };
   },
   methods: {
+    close(){
+      this.popRdvF = !this.popRdvF
+    },
     getAllRDV() {
       this.id = localStorage.getItem("id");
       fetch(`http://localhost/BRIEFS_6/User/getAllRDV?id="${this.id}"`, {
@@ -108,16 +115,20 @@ export default {
     },
     getRdv(id) {
       // this.id = localStorage.getItem("id");
-      fetch(`http://localhost/BRIEFS_6/user/getOne?id="${id}"`, {
-        method: "GET",
-      })
-        .then((result) => {
-          return result.json();
-        })
-        .then((result) => {
-          this.popRdv = result;
-          // console.log(this.popRdv);
-        });
+      // fetch(`http://localhost/BRIEFS_6/user/getOne?id="${id}"`, {
+      //   method: "GET",
+      // })
+      //   .then((result) => {
+      //     return result.json();
+      //   })
+      //   .then((result) => {
+      //     this.popRdv = result;
+
+      //     // console.log(this.popRdv);
+      //   });
+      this.popRdvF = !this.popRdvF;
+      this.idToUpdate = id
+      // console.log(id)
     },
   },
   mounted() {

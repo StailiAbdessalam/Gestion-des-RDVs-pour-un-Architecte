@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>{{ idToUpdate }}</p>
     <header class="hero"></header>
     <div class="flex justify-center">
       <div class="w-3/5">
@@ -23,6 +24,7 @@
               type="textarea"
               name="Sujet"
               id="Sujet"
+              v-model="popRdv.Sujet"
               placeholder="Sujet"
             />
           </div>
@@ -36,8 +38,10 @@
               class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
               type="date"
               name="date"
+              v-model="popRdv.date"
               :min="new Date().toISOString().substr(0, 10)"
               id="date"
+              @change="checkhour"
             />
           </div>
           <div>
@@ -58,22 +62,28 @@
                 mb-4
               "
               name="creneau"
+              v-model="popRdv.creneau"
             >
               <option disabled selected>
                 Choisissez l'heure à laquelle vous aimeriez vous rencontrer
               </option>
-              <option>10 h à 10:30h</option>
-              <option>11 h à 11:30h</option>
-              <option>14 h à 14:30h</option>
-              <option>15 h à 15:30h</option>
-              <option>16 h à 16:30h</option>
+              <option v-for="heur in hours" :key="heur">{{ heur }}</option>
             </select>
           </div>
-          <input
-            type="submit"
-            value="Confirmer"
-            class="bg-sky-600 hover:bg-sky-700"
-          />
+          <div class="flex gap-4 justify-center">
+            <input
+              type="submit"
+              value="Confirmer"
+              @click="UpdateRDV(popRdv.id)"
+              class="bg-sky-600 hover:bg-sky-700 p-2"
+            />
+            <input
+              type="submit"
+              value="Cancel"
+              @click="$emit('close')"
+              class="bg-red-600 hover:bg-red-700 text-white-400/0 p-2"
+            />
+          </div>
         </form>
       </div>
     </div>
@@ -83,32 +93,64 @@
 <script>
 export default {
   name: "UpdateRdv",
+  props: {
+    idToUpdate: Number,
+  },
   data() {
     return {
-      userInfo: {
-        Sujet: this.data[0].id,
-        date: this.data[1].id,
-        creneau: this.data[2].id,
+      popRdv: {
+        id_utilisateur: localStorage.getItem("id"),
+        Sujet: "",
+        date: "",
+        creneau: "",
       },
-    }
+      hours: [],
+    };
   },
   methods: {
-    getAllRDV() {
-      this.id = localStorage.getItem("id");
-      fetch(`http://localhost/BRIEFS_6/user/getOne?id="${this.id}"`, {
-        method: "GET",
-      })
+    checkhour() {
+      fetch(
+        `http://localhost/BRIEFS_6/User/selectInDate?date="${this.popRdv.date}"`,
+        {
+          method: "GET",
+        }
+      )
         .then((result) => {
           return result.json();
         })
-        .then((reponse) => {
-          this.userInfo = reponse;
+        .then((data) => {
+          this.hours = data;
         });
     },
-    getUser(){
+    UpdateRDV(id) {
+      fetch(`http://localhost/BRIEFS_6/user/updateAppointment?id=${id}`, {
+        method: "PUT",
+        body: JSON.stringify(this.popRdv),
+      })
+        .then((result) => {
+          // console.log(this.popRdv);
+          return result.json();
+        })
+        .then((data) => {
+          if (data) {
+           this.$emit('close');
+           this.$emit('getAllRDV');
+          }
+        });
+    },
+  },
+  mounted() {
+    // this.id = localStorage.getItem("id");
+    fetch(`http://localhost/BRIEFS_6/user/getOne?id="${this.idToUpdate}"`, {
+      method: "GET",
+    })
+      .then((result) => result.json())
+      .then((res) => {
+        this.popRdv = res;
 
-      
-    }
+        // console.log(res);
+      });
+    // console.log("fskqd");
   },
 };
 </script>

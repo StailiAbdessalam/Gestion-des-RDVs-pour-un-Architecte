@@ -93,9 +93,10 @@ class User extends Controller
       $data = array_values((array)$data);
 
       $created = $updateRDV->updateRDV($data, $_GET['id']);
-      if ($created) {
-        echo json_encode($created);
-      }
+      echo json_encode($created);
+      // if ($created) {
+      //   echo json_encode($created);
+      // }
     }
   }
 

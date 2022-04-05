@@ -58,9 +58,9 @@ class RDVModel
         // var_dump($data);
 
         $query->bindParam(':id', $id);
-        $query->bindParam(':Sujet', $data[0]);
-        $query->bindParam(':date', $data[1]);
-        $query->bindParam(':creneau', $data[2]);
+        $query->bindParam(':Sujet', $data[2]);
+        $query->bindParam(':date', $data[3]);
+        $query->bindParam(':creneau', $data[4]);
         return $query->execute();
     }
     public function slectcreneau($date){
