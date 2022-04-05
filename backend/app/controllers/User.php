@@ -55,9 +55,11 @@ class User extends Controller
 
   public function getOne()
   {
-    $select = $this->model('UserModel');
-    $selected = $select->selectAll();
-    echo json_encode($selected);
+    if ($_SERVER["REQUEST_METHOD"] === "GET") {
+      $select = $this->model('UserModel');
+      $selected = $select->select($_GET['id']);
+      echo json_encode($selected);
+    }
   }
 
   public function addAppointment()
@@ -82,6 +84,21 @@ class User extends Controller
     }
   }
 
+  public function updateAppointment()
+  {
+    if ($_SERVER["REQUEST_METHOD"] === "PUT") {
+      $updateRDV = $this->model('RDVModel');
+      $json = file_get_contents('php://input');
+      $data = json_decode($json);
+      $data = array_values((array)$data);
+
+      $created = $updateRDV->updateRDV($data, $_GET['id']);
+      echo json_encode($created);
+      // if ($created) {
+      //   echo json_encode($created);
+      // }
+    }
+  }
 
   public function selectInDate()
   {

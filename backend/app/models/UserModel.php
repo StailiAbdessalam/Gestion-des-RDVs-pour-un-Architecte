@@ -18,12 +18,12 @@ class UserModel
         $result = $stm->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    public function select($data, $id)
+    public function select($id)
     {
         $conn = $this->db;
-        $requi = "SELECT " . $data . "FROM `utilisateur` WHERE id=" . $id;
+        $requi = "SELECT * FROM `reservation` WHERE id=". $id;
         $stm = $conn->prepare($requi);
-        return  $stm->execute();
+        $stm->execute();
         $result = $stm->fetch(PDO::FETCH_ASSOC);
         return $result;
     }

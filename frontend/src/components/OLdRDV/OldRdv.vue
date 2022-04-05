@@ -6,7 +6,15 @@
           <table class="w-full">
             <thead>
               <tr
-                class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600"
+                class="
+                  text-md
+                  font-semibold
+                  tracking-wide
+                  text-left text-gray-900
+                  bg-gray-100
+                  uppercase
+                  border-b border-gray-600
+                "
               >
                 <th class="px-4 py-3">Sujet</th>
                 <th class="px-4 py-3">creneau</th>
@@ -43,13 +51,15 @@
         </div>
       </div>
     </section>
+    <UpdateRDV class="popap" :idToUpdate="idToUpdate" @close="close" @getAllRDV="getAllRDV" v-if="!popRdvF" />
   </div>
 </template>
 
 <script>
 import { intervalToDuration, } from "date-fns";
-
+import UpdateRDV from "../Home/UpdateRdv.vue";
 export default {
+  components: { UpdateRDV },
   name: "Contact-us",
   data() {
     return {
@@ -58,10 +68,15 @@ export default {
       today: new Date(),
       RDVdt: "",
       chrono: [],
-
+      popRdv: {},
+      popRdvF: true,
+      idToUpdate :""
     };
   },
   methods: {
+    close(){
+      this.popRdvF = !this.popRdvF
+    },
     getAllRDV() {
       this.id = localStorage.getItem("id");
       fetch(`http://localhost/BRIEFS_6/User/getAllRDV?id="${this.id}"`, {
@@ -90,17 +105,35 @@ export default {
 
 
     // },
+
     DeleteRDV(id) {
       fetch(`http://localhost/BRIEFS_6/User/remove?id="${id}"`, {
         method: "DELETE",
-      })
-        .then(() => {
-          // return result.json();
-          this.getAllRDV();
-        })
+      }).then(() => {
+        // return result.json();
+        this.getAllRDV();
+        // console.log(this.popRdv);
+      });
       // .then((reponse) => {
       //   this.Rdvuser = reponse;
       // });
+    },
+    getRdv(id) {
+      // this.id = localStorage.getItem("id");
+      // fetch(`http://localhost/BRIEFS_6/user/getOne?id="${id}"`, {
+      //   method: "GET",
+      // })
+      //   .then((result) => {
+      //     return result.json();
+      //   })
+      //   .then((result) => {
+      //     this.popRdv = result;
+
+      //     // console.log(this.popRdv);
+      //   });
+      this.popRdvF = !this.popRdvF;
+      this.idToUpdate = id
+      // console.log(id)
     },
   },
   mounted() {
@@ -109,9 +142,17 @@ export default {
     //   this.updateChrono();
     // }, 1000);
     this.getAllRDV();
-  }
+  },
 };
 </script>
 
 <style>
+.popap {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.359);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
 </style>

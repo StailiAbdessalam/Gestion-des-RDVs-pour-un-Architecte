@@ -2,7 +2,6 @@
   <div>
     <Navigation />
     <router-view  />
-    <font-awesome-icon :icon="['fas','robot']"/>
   </div>
 </template>
 
