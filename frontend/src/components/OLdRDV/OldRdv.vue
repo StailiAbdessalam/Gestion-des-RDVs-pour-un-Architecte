@@ -20,7 +20,7 @@
                 <th class="px-4 py-3">creneau</th>
                 <th class="px-4 py-3">Date</th>
                 <th class="px-4 py-3">Action</th>
-                <th class="px-4 py-3">download </th>
+                <th class="px-4 py-3">download</th>
               </tr>
             </thead>
             <tbody class="bg-white">
@@ -45,16 +45,25 @@
 
                 <td class="px-4 py-3 text-sm border">{{ RDVone.date }}</td>
                 <td class="px-4 py-3 text-sm border">
-                  <a @click="DeleteRDV" href="" class="text-[#FF0000]">Delete</a> &nbsp;
-                  <a href="" class="text-[#088F8F]">Edit</a>
+                  <a
+                    @click="DeleteRDV(RDVone.id)"
+                    class="text-[#FF0000] hover:cusor-pointer"
+                    >Delete</a
+                  >
+                  &nbsp;
+                  <!-- <router-link :to="{name:'Update' , params:{id:RDVone.id}}"  class="text-[#088F8F]">Edit</router-link> -->
+                  <a @click="getRdv(RDVone.id)" class="text-[#088F8F]">Edit</a>
                 </td>
-                <td class="px-4 py-3 text-sm border"><a href="" class="text-[#0096FF]">download </a></td>
+                <td class="px-4 py-3 text-sm border">
+                  <a class="text-[#0096FF]">download</a>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </section>
+    
   </div>
 </template>
 
@@ -65,23 +74,62 @@ export default {
     return {
       Rdvuser: {},
       id: "",
+      popRdv: {},
     };
   },
-
-  mounted() {
-    this.id = localStorage.getItem("id");
-    fetch(`http://localhost/BRIEFS_6/User/getAllRDV?id="${this.id}"`, {
-      method: "GET",
-    })
-      .then((result) => {
-        return result.json();
+  methods: {
+    getAllRDV() {
+      this.id = localStorage.getItem("id");
+      fetch(`http://localhost/BRIEFS_6/User/getAllRDV?id="${this.id}"`, {
+        method: "GET",
       })
-      .then((reponse) => {
-        this.Rdvuser = reponse;
+        .then((result) => {
+          return result.json();
+        })
+        .then((reponse) => {
+          this.Rdvuser = reponse;
+        });
+    },
+
+    DeleteRDV(id) {
+      fetch(`http://localhost/BRIEFS_6/User/remove?id="${id}"`, {
+        method: "DELETE",
+      }).then(() => {
+        // return result.json();
+        this.getAllRDV();
+        // console.log(this.popRdv);
       });
+      // .then((reponse) => {
+      //   this.Rdvuser = reponse;
+      // });
+    },
+    getRdv(id) {
+      // this.id = localStorage.getItem("id");
+      fetch(`http://localhost/BRIEFS_6/user/getOne?id="${id}"`, {
+        method: "GET",
+      })
+        .then((result) => {
+          return result.json();
+        })
+        .then((result) => {
+          this.popRdv = result;
+          // console.log(this.popRdv);
+        });
+    },
+  },
+  mounted() {
+    this.getAllRDV();
   },
 };
 </script>
 
 <style>
+.popap {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.359);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
 </style>

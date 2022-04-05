@@ -39,8 +39,28 @@ class RDVModel
         return $result;
     }
 
-    public function updateRDV(){
-        $conn= $this->db;
-        $query = "";
+    public function deleteRDV($id)
+    {
+        $conn = $this->db;
+        $requet = "DELETE FROM `reservation` WHERE id=" . $id;
+        $stmn = $conn->prepare($requet);
+        return $stmn->execute();
+    }
+
+    public function updateRDV($data,$id)
+    {
+        $conn =$this->db;
+            $query = $conn->prepare("UPDATE `reservation` SET
+                                    `Sujet`=:Sujet,
+                                    `date`=:date,
+                                    `creneau`=:creneau
+                                    WHERE `id`=:id");
+        // var_dump($data);
+
+        $query->bindParam(':id', $id);
+        $query->bindParam(':Sujet', $data[0]);
+        $query->bindParam(':date', $data[1]);
+        $query->bindParam(':creneau', $data[2]);
+        return $query->execute();
     }
 }

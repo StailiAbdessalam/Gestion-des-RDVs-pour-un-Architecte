@@ -36,7 +36,7 @@ class User extends Controller
       $json = file_get_contents('php://input');
       $data = json_decode($json);
       $data = array_values((array)$data);
-      $data[5]=uniqid();
+      $data[5] = uniqid();
       $created = $CreateAcc->insert($data);
       if ($created) {
         echo json_encode($data);
@@ -47,20 +47,23 @@ class User extends Controller
   public function getAllRDV()
   {
     if ($_SERVER["REQUEST_METHOD"] === "GET") {
-    $RDV = $this->model('RDVModel');
-    $RDVs = $RDV->selectAll($_GET['id']);
-    echo json_encode($RDVs);
+      $RDV = $this->model('RDVModel');
+      $RDVs = $RDV->selectAll($_GET['id']);
+      echo json_encode($RDVs);
     }
   }
 
   public function getOne()
   {
-    $select = $this->model('UserModel');
-    $selected = $select->selectAll();
-    echo json_encode($selected);
+    if ($_SERVER["REQUEST_METHOD"] === "GET") {
+      $select = $this->model('UserModel');
+      $selected = $select->select($_GET['id']);
+      echo json_encode($selected);
+    }
   }
 
-  public function addAppointment(){
+  public function addAppointment()
+  {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $addApp = $this->model('RDVModel');
       $json = file_get_contents('php://input');
@@ -73,7 +76,26 @@ class User extends Controller
       // }
     }
   }
-  public function updateAppointment(){
-        
+  public function remove()
+  {
+    if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
+      $deleteRDV = $this->model('RDVModel');
+      $deleteRDV->deleteRDV($_GET['id']);
+    }
+  }
+
+  public function updateAppointment()
+  {
+    if ($_SERVER["REQUEST_METHOD"] === "PUT") {
+      $updateRDV = $this->model('RDVModel');
+      $json = file_get_contents('php://input');
+      $data = json_decode($json);
+      $data = array_values((array)$data);
+
+      $created = $updateRDV->updateRDV($data, $_GET['id']);
+      if ($created) {
+        echo json_encode($created);
+      }
+    }
   }
 }
