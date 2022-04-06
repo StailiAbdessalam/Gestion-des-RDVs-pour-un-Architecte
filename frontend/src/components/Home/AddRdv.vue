@@ -1,13 +1,13 @@
 <template>
   <div>
-    <header class="hero">
-      <h1
-        class="text-center text-3xl mb-6 text-gray-600 font-bold font-sans"
-      >OFREZ-VOUS LE LUXE DE L'ARCHITECTURE</h1>
-    </header>
+    <header class="hero"></header>
     <div class="flex justify-center">
       <div class="w-3/5">
-        <form class="bg-white p-10 rounded-lg shadow-lg min-w-full" @submit.prevent>
+        <form
+          id="popRdv"
+          class="flex flex-col bg-white p-10 rounded-lg shadow-lg min-w-full"
+          @submit.prevent
+        >
           <h1
             class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans"
           >Prendre un rendez-vous</h1>
@@ -28,7 +28,7 @@
               for="date"
             >Date :</label>
             <input
-            @change="checkhour"
+              @change="checkhour"
               class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
               type="date"
               name="date"
@@ -47,15 +47,15 @@
               name="creneau"
               v-model="RDVform.creneau"
             >
-              <option disabled selected>Choisissez l'heure à laquelle vous aimeriez vous rencontrer</option>
-              <option v-for="hor in hour" :key="hor">{{hor}}</option>
+              <option selected disabled >Choisissez l'heure à laquelle vous aimeriez vous rencontrer</option>
+              <option v-for="hor in hour" :key="hor">{{ hor }}</option>
             </select>
           </div>
           <input
             type="submit"
             value="Confirmer"
             @click="addAppointment()"
-            class="bg-sky-600 hover:bg-sky-700"
+            class="py-3 px-5 mt-auto rounded-md text-white bg-sky-600 hover:bg-blue-300 hover:text-blue-900 transition-all justify-self-end"
           />
         </form>
       </div>
@@ -64,9 +64,6 @@
 </template>
 
 <script>
-// if (this.RDVform.date) {
-//   this.checkhour();
-// }
 export default {
   name: "hafidH",
   data() {
@@ -109,6 +106,17 @@ export default {
   },
 };
 </script>
-
 <style>
+#popRdv {
+  height: 450px;
+}
+#title {
+  font-size: 1.5rem;
+  font-family: "Courier New", Courier, monospace;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>

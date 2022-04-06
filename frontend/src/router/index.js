@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import AddRDVp from "../view/AddRdvV.vue";
-
 const routes = [
   {
     path: "/User/RDV",
@@ -49,10 +48,8 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../view/UpdateView.vue"),
   },
 ];
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
-
 export default router;

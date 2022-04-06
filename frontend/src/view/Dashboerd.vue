@@ -1,6 +1,6 @@
 <template>
   <div>
-      <Allusers />
+    <Allusers />
   </div>
 </template>
 
@@ -11,6 +11,3 @@ export default {
   name: "dashboard-a",
 };
 </script>
-
-<style>
-</style>

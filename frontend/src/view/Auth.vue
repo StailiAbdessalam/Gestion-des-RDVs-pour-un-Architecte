@@ -1,19 +1,15 @@
 <template>
   <div>
-    <br>
+    <br />
     <AuthC />
   </div>
 </template>
-
 <script>
 import AuthC from "../components/auth/AutoC.vue"
 export default {
-  name:"AuthView",
+  name: "AuthView",
   components: { AuthC },
-  inject:["setCurrentId"],
-  props: ["role", "changeRole" ,"id"]
+  inject: ["setCurrentId"],
+  props: ["role", "changeRole", "id"]
 };
 </script>
-
-<style>
-</style>

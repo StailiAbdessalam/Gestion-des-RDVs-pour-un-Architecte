@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <div class="container">
-      <div class="bg-white p-10 rounded-lg shadow-lg w-3/5">
+      <div id="popLogin" class="bg-white p-10 rounded-lg shadow-lg w-3/5">
         <div class="formContent" v-if="form">
           <form @submit.prevent action method>
             <input
@@ -11,6 +11,7 @@
               id="PIN"
               placeholder="Auth By PIN"
               v-model="PIN"
+              required
             />
             <div class="buttons">
               <input
@@ -28,7 +29,7 @@
             </div>
             <a href="#" v-on:click="form = !form">
               <br />You dont have one?
-              <span>Creat an account</span>
+              <span class="Newconte">Creat an account</span>
             </a>
           </form>
         </div>
@@ -39,24 +40,24 @@
             <input type="number" v-model="registreForm.Age" placeholder="Age" />
             <input type="TEXT" v-model="registreForm.Job" placeholder="profession" />
             <input type="text" v-model="registreForm.CIN" placeholder="CIN" />
-            <!-- <a href> -->
-            <input
-              type="button"
-              class="hgjd bg-sky-600 hover:bg-sky-700"
-              value="Submit"
-              @click="addUser()"
-            />
-            <!-- </a> -->
-            <a href="#" v-on:click="form = !form">
-              <br />Already have an account?
-            </a>
+            <div class="flex-butt">
+              <input
+                type="button"
+                class="hgjd bg-sky-600 hover:bg-sky-700"
+                value="Submit"
+                @click="addUser()"
+              />
+              <a id="cntdija" href="#" v-on:click="form = !form">
+                <br />
+                <span class="Newconte Newconte--abd">Already have an account?</span>
+              </a>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: "Auth-m",
@@ -76,11 +77,8 @@ export default {
   },
   props: ["role", "changeRole", "add"],
   methods: {
-
     showAlert(param) {
-      // Use sweetalert2
       this.$swal("Here is your reference id: " + param);
-
     },
     checkAdmin() {
       fetch("http://localhost/BRIEFS_6/Admin/index", {
@@ -92,7 +90,7 @@ export default {
         })
         .then((reponse) => {
           if (reponse == !false) {
-            localStorage.setItem("role","admin");
+            localStorage.setItem("role", "admin");
             this.$router.push("/Admin");
           }
         });
@@ -124,29 +122,53 @@ export default {
         .then((data) => {
           if (data) {
             this.showAlert(data[5]);
-            // this.$router.push("/");
             this.form = !this.form
-
           }
-          // this.add(data);
         });
     },
   },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import "../../assets/style/helloWord.css";
 .hello {
-  /* background-image: url(../../assets/img/pexels-thirdman-5582599.jpg); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 80vh;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
 }
+#PIN {
+  height: 50px;
+}
+.Newconte {
+  font-weight: bold;
+  color: #00bcd4;
+}
+.abd {
+  display: flex;
+}
+#cntdija {
+  display: flex;
+}
 .hgjd {
   color: aliceblue;
   border-radius: 3px;
+  width: 120px;
+}
+#popLogin {
+  height: 324px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.flex-butt {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <home-c />
+  <HomeC />
 </template>
 
 <script>
@@ -9,6 +9,3 @@ export default {
   name: "HomeV",
 };
 </script>
-
-<style>
-</style>

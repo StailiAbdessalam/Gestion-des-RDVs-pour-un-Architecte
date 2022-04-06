@@ -1,17 +1,14 @@
 <template>
   <div>
-    <br>
-    <OldRdv/>
+    <br />
+    <OldRdv />
   </div>
 </template>
 
 <script>
 import OldRdv from "../components/OLdRDV/OldRdv.vue";
 export default {
-  name:"R-dv",
+  name: "R-dv",
   components: { OldRdv },
 };
 </script>
-
-<style>
-</style>
