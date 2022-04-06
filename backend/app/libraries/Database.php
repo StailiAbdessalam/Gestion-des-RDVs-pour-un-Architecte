@@ -6,8 +6,6 @@ class Database
 	private $pass = "";
 	private $dbname = "Architecte";
 	public $dbh;
-	private $error;
-	private $stmt;
 	public function __construct()
 	{
 		$dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
@@ -22,5 +20,3 @@ class Database
 		}
 	}
 }
-
-

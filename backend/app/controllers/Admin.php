@@ -3,11 +3,10 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Origin:*');
 header('Access-Control-Allow-Methods:*');
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
     if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
 }
 if ($_SERVER["REQUEST_METHOD"] == "OPTIONS") return true;
-
 class Admin extends Controller
 {
     public $id;
@@ -15,7 +14,6 @@ class Admin extends Controller
     public function __construct()
     {
     }
-
     public function index()
     {
         $admin = $this->model('AdminModel');
@@ -36,7 +34,6 @@ class Admin extends Controller
             echo json_encode($this->valide);
         }
     }
-
     public function DELETEUSER()
     {
         if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
@@ -53,14 +50,12 @@ class Admin extends Controller
             $admin->remove($_GET['id']);
         }
     }
-
     public function UserAll()
     {
         $admin = $this->model('UserModel');
         $admins = $admin->selectAll();
         echo json_encode($admins);
     }
-
     public function RDVALL()
     {
         $admin = $this->model('RDVModel');

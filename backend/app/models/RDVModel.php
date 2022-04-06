@@ -47,10 +47,10 @@ class RDVModel
         return $stmn->execute();
     }
 
-    public function updateRDV($data,$id)
+    public function updateRDV($data, $id)
     {
-        $conn =$this->db;
-            $query = $conn->prepare("UPDATE `reservation` SET
+        $conn = $this->db;
+        $query = $conn->prepare("UPDATE `reservation` SET
                                     `Sujet`=:Sujet,
                                     `date`=:date,
                                     `creneau`=:creneau
@@ -63,7 +63,8 @@ class RDVModel
         $query->bindParam(':creneau', $data[4]);
         return $query->execute();
     }
-    public function slectcreneau($date){
+    public function slectcreneau($date)
+    {
         $conn = $this->db;
         $requete  = "SELECT creneau FROM `reservation` where date=$date";
         $stm = $conn->prepare($requete);

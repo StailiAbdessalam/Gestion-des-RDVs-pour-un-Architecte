@@ -8,7 +8,6 @@ class User extends Controller
   public function __construct()
   {
   }
-
   public function index()
   {
     $user = $this->model('UserModel');
@@ -17,7 +16,7 @@ class User extends Controller
       $json = file_get_contents('php://input');
       $data = json_decode($json);
       foreach ($users as $user) {
-        if ($user['Reference_unique'] == $data) {
+        if (password_verify($data , $user['Reference_unique'])) {
           $this->valide = $user;
           break;
         } else {
@@ -26,9 +25,7 @@ class User extends Controller
       }
     }
     echo json_encode($this->valide);
-    // echo "hslfhids";
   }
-
   public function register()
   {
     $CreateAcc = $this->model('UserModel');
@@ -36,14 +33,15 @@ class User extends Controller
       $json = file_get_contents('php://input');
       $data = json_decode($json);
       $data = array_values((array)$data);
-      $data[5] = uniqid();
+      $REf = uniqid();
+      $data[5]=password_hash($REf,PASSWORD_DEFAULT);
       $created = $CreateAcc->insert($data);
       if ($created) {
+        $data[5]=$REf;
         echo json_encode($data);
       }
     }
   }
-
   public function getAllRDV()
   {
     if ($_SERVER["REQUEST_METHOD"] === "GET") {
@@ -52,7 +50,6 @@ class User extends Controller
       echo json_encode($RDVs);
     }
   }
-
   public function getOne()
   {
     if ($_SERVER["REQUEST_METHOD"] === "GET") {
@@ -61,7 +58,6 @@ class User extends Controller
       echo json_encode($selected);
     }
   }
-
   public function addAppointment()
   {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -71,9 +67,6 @@ class User extends Controller
       $data = array_values((array)$data);
       $created = $addApp->insertRDV($data);
       echo json_encode($created);
-      // if ($created) {
-      //   echo json_encode($data);
-      // }
     }
   }
   public function remove()
@@ -83,7 +76,6 @@ class User extends Controller
       $deleteRDV->deleteRDV($_GET['id']);
     }
   }
-
   public function updateAppointment()
   {
     if ($_SERVER["REQUEST_METHOD"] === "PUT") {
@@ -94,12 +86,8 @@ class User extends Controller
 
       $created = $updateRDV->updateRDV($data, $_GET['id']);
       echo json_encode($created);
-      // if ($created) {
-      //   echo json_encode($created);
-      // }
     }
   }
-
   public function selectInDate()
   {
     if ($_SERVER["REQUEST_METHOD"] === "GET") {
