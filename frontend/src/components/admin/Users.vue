@@ -3,25 +3,23 @@
     <section class="container mx-auto p-6 font-mono">
       <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
         <div class="w-full overflow-x-auto">
-          <h1 class="pb-6 text-xl font-bold">TOUS MES CLIENTS</h1>
-
+          <div id="Alluser" class="pb-6 text-xl font-bold">All User ☜(ﾟヮﾟ☜)</div>
           <table class="w-full">
             <thead>
               <tr
                 class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600"
               >
-                <th class="px-4 py-3">id</th>
-                <th class="px-4 py-3">Name</th>
-                <th class="px-4 py-3">Age</th>
-                <th class="px-4 py-3">Status</th>
-                <th class="px-4 py-3">CIN</th>
-                <th class="px-4 py-3">Action</th>
+                <th id="add" class="px-4 py-3">id</th>
+                <th id="add" class="px-4 py-3">Name</th>
+                <th id="add" class="px-4 py-3">Age</th>
+                <th id="add" class="px-4 py-3">Status</th>
+                <th id="add" class="px-4 py-3">CIN</th>
+                <th id="add" class="px-4 py-3">Action</th>
               </tr>
             </thead>
             <tbody class="bg-white">
               <tr v-for="user in Alluser" :key="user.id" class="text-gray-700">
                 <td class="px-4 py-3 text-ms font-semibold border">{{ user.id }}</td>
-
                 <td class="px-4 py-3 border">
                   <div class="flex items-center text-sm">
                     <div class="relative w-8 h-8 mr-3 rounded-full md:block">
@@ -35,17 +33,12 @@
                     </div>
                     <div>
                       <p class="font-semibold text-black">{{ user.Nom }} {{ user.Prenom }}</p>
-                      <!-- <p class="text-xs text-gray-600">{{user.Job}}</p> -->
                     </div>
                   </div>
                 </td>
                 <td class="px-4 py-3 text-ms font-semibold border">{{ user.Age }}</td>
                 <td class="px-4 py-3 text-xs border">
                   <h3>{{ user.Job }}</h3>
-                  <h3>{{ user.id }}</h3>
-                  <!-- <span
-                    class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"
-                  >profession</span>-->
                 </td>
                 <td class="px-4 py-3 text-sm border">{{ user.CIN }}</td>
                 <td class="px-4 py-3 text-sm border">
@@ -78,10 +71,8 @@ export default {
         })
         .then((reponse) => {
           this.Alluser = reponse;
-
         });
     },
-
     deleteUser(id) {
       fetch(
         `http://localhost/BRIEFS_6/admin/DELETEUSER?id=${id}`,
@@ -93,26 +84,44 @@ export default {
           this.GetAllUser();
         })
     },
-    check(){
-      if(localStorage.getItem('role') === null){
+    check() {
+      if (localStorage.getItem('role') === null) {
         this.$router.push('/');
-      }else if(localStorage.getItem('role') === 'admin'){
+      } else if (localStorage.getItem('role') === 'admin') {
         this.$router.push('/admin');
-      }else {
+      } else {
         this.$router.push('/User');
       }
     }
-  }, 
+  },
   mounted() {
-  this.check();
+    this.check();
     this.GetAllUser();
   }
-
 };
 </script>
 
 <style>
-.dlete{
+#Alluser {
+  font-size: 1.5rem;
+  font-family: "Courier New", Courier, monospace;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dlete {
+  color: red;
   cursor: pointer;
+}
+.dlete:hover {
+  color: rgba(181, 46, 46, 0.577);
+}
+#add {
+  text-align: center;
+  color: darkslateblue;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 </style>
