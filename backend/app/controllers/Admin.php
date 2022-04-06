@@ -50,16 +50,49 @@ class Admin extends Controller
             $admin->remove($_GET['id']);
         }
     }
+
+
+
+    public function RDVALL()
+    {
+        $admin = $this->model('RDVModel');
+        $admins = $admin->selectAll();
+        echo json_encode($admins);
+    }
+    public function getAllrdv()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === "GET") {
+            $admin = $this->model('AdminModel');
+            $admins = $admin->selectAllRdv();
+            echo json_encode($admins);
+        }
+    }
     public function UserAll()
     {
         $admin = $this->model('UserModel');
         $admins = $admin->selectAll();
         echo json_encode($admins);
     }
-    public function RDVALL()
+    public function getOneUser()
     {
-        $admin = $this->model('RDVModel');
-        $admins = $admin->selectAll();
-        echo json_encode($admins);
+        if ($_SERVER["REQUEST_METHOD"] === "GET") {
+            $id = $_GET['id'];
+            $admin = $this->model('AdminModel');
+            $data = $admin->SelectOneUser($id);
+            echo json_encode($data);
+        }
+    }
+    public function updateUser()
+    {
+      if ($_SERVER["REQUEST_METHOD"] === "PUT") {
+        $UpdateUser = $this->model('AdminModel');
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        $Updatet = $UpdateUser->updateUser($data);
+        echo json_encode($Updatet);
+        // if ($created) {
+        //   echo json_encode($created);
+        // }
+      }
     }
 }

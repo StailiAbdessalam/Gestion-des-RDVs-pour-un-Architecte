@@ -7,7 +7,15 @@
           <table class="w-full">
             <thead>
               <tr
-                class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600"
+                class="
+                  text-md
+                  font-semibold
+                  tracking-wide
+                  text-left text-gray-900
+                  bg-gray-100
+                  uppercase
+                  border-b border-gray-600
+                "
               >
                 <th id="disflex" class="px-4 py-3">Sujet</th>
                 <th id="disflex" class="px-4 py-3">creneau</th>
@@ -25,11 +33,16 @@
                     </div>
                   </div>
                 </td>
-                <td class="px-4 py-3 text-md font-semibold border">{{ rdv.creneau }}</td>
+                <td class="px-4 py-3 text-md font-semibold border">
+                  {{ rdv.creneau }}
+                </td>
 
                 <td class="px-4 py-3 text-sm border">{{ rdv.date }}</td>
                 <td class="px-4 py-3 text-sm border">
-                  <a @click="DeleteRDV(rdv.id)" class="text-[#FF0000]">Delete</a> &nbsp;
+                  <a @click="DeleteRDV(rdv.id)" class="text-[#FF0000]"
+                    >Delete</a
+                  >
+                  &nbsp;
                   <a @click="getRdv(rdv.id)" class="text-[#088F8F]">Edit</a>
                 </td>
                 <td class="px-4 py-3 text-sm border">
@@ -52,7 +65,7 @@
 </template>
 
 <script>
-import { intervalToDuration, } from "date-fns";
+import { intervalToDuration } from "date-fns";
 import UpdateRDV from "../Home/UpdateRdv.vue";
 export default {
   components: { UpdateRDV },
@@ -66,12 +79,12 @@ export default {
       chrono: [],
       popRdv: {},
       popRdvF: true,
-      idToUpdate: ""
+      idToUpdate: "",
     };
   },
   methods: {
     close() {
-      this.popRdvF = !this.popRdvF
+      this.popRdvF = !this.popRdvF;
     },
     getAllRDV() {
       this.id = localStorage.getItem("id");
@@ -92,12 +105,12 @@ export default {
         });
     },
     check() {
-      if (localStorage.getItem('role') === null) {
-        this.$router.push('/');
-      } else if (localStorage.getItem('role') === 'admin') {
-        this.$router.push('/admin');
+      if (localStorage.getItem("role") === null) {
+        this.$router.push("/");
+      } else if (localStorage.getItem("role") === "admin") {
+        this.$router.push("/admin");
       } else {
-        this.$router.push('/User');
+        this.$router.push("/User");
       }
     },
     DeleteRDV(id) {
