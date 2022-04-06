@@ -133,8 +133,8 @@ export default {
         })
         .then((data) => {
           if (data) {
-           this.$emit('close');
-           this.$emit('getAllRDV');
+            this.$emit("close");
+            this.$emit("getAllRDV");
           }
         });
     },

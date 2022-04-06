@@ -35,9 +35,22 @@
         <div class="formContetTwo" v-if="!form">
           <form>
             <input type="text" v-model="registreForm.Nom" placeholder="Nom" />
-            <input type="text" v-model="registreForm.Prenom" placeholder="Prenom" />
-            <input type="number" v-model="registreForm.Age" placeholder="Age" />
-            <input type="TEXT" v-model="registreForm.Job" placeholder="profession" />
+            <input
+              type="text"
+              v-model="registreForm.Prenom"
+              placeholder="Prenom"
+            />
+            <input
+              type="number"
+              min="22"
+              v-model="registreForm.Age"
+              placeholder="Age"
+            />
+            <input
+              type="TEXT"
+              v-model="registreForm.Job"
+              placeholder="profession"
+            />
             <input type="text" v-model="registreForm.CIN" placeholder="CIN" />
             <!-- <a href> -->
             <input
@@ -76,11 +89,9 @@ export default {
   },
   props: ["role", "changeRole", "add"],
   methods: {
-
     showAlert(param) {
       // Use sweetalert2
       this.$swal("Here is your reference id: " + param);
-
     },
     checkAdmin() {
       fetch("http://localhost/BRIEFS_6/Admin/index", {
@@ -92,7 +103,7 @@ export default {
         })
         .then((reponse) => {
           if (reponse == !false) {
-            localStorage.setItem("role","admin");
+            localStorage.setItem("role", "admin");
             this.$router.push("/Admin");
           }
         });
@@ -125,8 +136,7 @@ export default {
           if (data) {
             this.showAlert(data[5]);
             // this.$router.push("/");
-            this.form = !this.form
-
+            this.form = !this.form;
           }
           // this.add(data);
         });

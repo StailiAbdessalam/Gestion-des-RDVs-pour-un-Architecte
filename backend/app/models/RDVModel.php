@@ -31,10 +31,6 @@ class RDVModel
         $conn = $this->db;
         $requete  = "INSERT INTO `reservation`(`id_utilisateur`,`Sujet`, `date`, `creneau`) VALUES (?,?,?,?)";
         $stm = $conn->prepare($requete);
-        // $stm->bindParam(':Sujet', $data['Sujet']);
-        // $stm->bindParam(':date', $data['date']);
-        // $stm->bindParam(':creneau', $data['creneau']);
-        // $stm->bindParam(':id_utilisateur', $data['id_utilisateur']);
         $result = $stm->execute($data);
         return $result;
     }
