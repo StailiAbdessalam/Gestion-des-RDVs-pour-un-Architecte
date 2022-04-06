@@ -113,15 +113,6 @@ export default {
         this.GetAllUser();
       });
     },
-    check() {
-      if (localStorage.getItem("role") === null) {
-        this.$router.push("/");
-      } else if (localStorage.getItem("role") === "admin") {
-        this.$router.push("/admin");
-      } else {
-        this.$router.push("/User");
-      }
-    },
     getOneUser() {
       fetch(
         `http://localhost/BRIEFS_6/admin/getOneUser?id="${this.UserIDupdate}"`,
@@ -140,7 +131,7 @@ export default {
       } else {
         this.$router.push('/User');
       }
-    }
+    },
     close() {
       this.popUserF = !this.popUserF;
     },
