@@ -35,7 +35,7 @@
         </div>
         <div class="formContetTwo" v-if="!form">
           <form>
-            <input type="text" v-model="registreForm.Nom" placeholder="Nom" />
+            <input type="text" v-model="registreForm.Nom" placeholder="Nom"  />
             <input type="text" v-model="registreForm.Prenom" placeholder="Prenom" />
             <input type="number" v-model="registreForm.Age" placeholder="Age" />
             <input type="TEXT" v-model="registreForm.Job" placeholder="profession" />
@@ -180,7 +180,7 @@ export default {
   width: 120px;
 }
 #popLogin {
-  height: 324px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
