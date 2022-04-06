@@ -10,21 +10,23 @@ class User extends Controller
   }
   public function index()
   {
-    $user = $this->model('UserModel');
-    $users = $user->SelectAll();
+    $userModel = $this->model('UserModel');
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $json = file_get_contents('php://input');
       $data = json_decode($json);
-      foreach ($users as $user) {
-        if (password_verify($data , $user['Reference_unique'])) {
-          $this->valide = $user;
-          break;
-        } else {
-          $this->valide = false;
-        }
-      }
+      $user = $userModel->fetchByRef($data);
+      echo json_encode($user);
+      // foreach ($users as $user) {
+      //   if ($data === $user['Reference_unique']) {
+      //     $this->valide = $user;
+      //     break;
+      //   } else {
+      //     $this->valide = false;
+      //   }
+      // }
+
     }
-    echo json_encode($this->valide);
+    // echo json_encode($this->valide);
   }
   public function register()
   {
@@ -33,11 +35,9 @@ class User extends Controller
       $json = file_get_contents('php://input');
       $data = json_decode($json);
       $data = array_values((array)$data);
-      $REf = uniqid();
-      $data[5]=password_hash($REf,PASSWORD_DEFAULT);
+      $data[5] = uniqid();
       $created = $CreateAcc->insert($data);
       if ($created) {
-        $data[5]=$REf;
         echo json_encode($data);
       }
     }

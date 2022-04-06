@@ -18,13 +18,13 @@
                 type="submit"
                 value="As user"
                 class="hgjd bg-sky-600 hover:bg-sky-700"
-                @click="checkUser()"
+                @click="login('user')"
               />
               <input
                 type="submit"
                 value="as admin"
                 class="hgjd bg-sky-600 hover:bg-sky-700"
-                @click="checkAdmin()"
+                @click="login('admin')"
               />
             </div>
             <a href="#" v-on:click="form = !form">
@@ -45,7 +45,7 @@
                 type="button"
                 class="hgjd bg-sky-600 hover:bg-sky-700"
                 value="Submit"
-                @click="addUser()"
+                @click="register"
               />
               <a id="cntdija" href="#" v-on:click="form = !form">
                 <br />
@@ -59,8 +59,10 @@
   </div>
 </template>
 <script>
+
 export default {
   name: "Auth-m",
+  inject: ["role", "resetRole", "changeRole"],
   data() {
     return {
       form: true,
@@ -75,13 +77,13 @@ export default {
       Reference_unique: true,
     };
   },
-  props: ["role", "changeRole", "add"],
+  props: ["add"],
   methods: {
     showAlert(param) {
       this.$swal("Here is your reference id: " + param);
     },
-    checkAdmin() {
-      fetch("http://localhost/BRIEFS_6/Admin/index", {
+    login(role) {
+      fetch(`http://localhost/BRIEFS_6/${role}/index`, {
         method: "POST",
         body: JSON.stringify(this.PIN),
       })
@@ -89,29 +91,47 @@ export default {
           return result.json();
         })
         .then((reponse) => {
-          if (reponse == !false) {
-            localStorage.setItem("role", "admin");
-            this.$router.push("/Admin");
+          if (!reponse) {
+            return;
           }
+          localStorage.setItem("role", role);
+          localStorage.setItem("id", reponse.id);
+          this.changeRole(role);
+          this.$router.push(`/${role}`);
         });
     },
-    checkUser() {
-      fetch("http://localhost/BRIEFS_6/User/index", {
-        method: "POST",
-        body: JSON.stringify(this.PIN),
-      })
-        .then((result) => {
-          return result.json();
-        })
-        .then((reponse) => {
-          if (reponse) {
-            localStorage.setItem("id", reponse.id);
-            localStorage.setItem("role", "user");
-            this.$router.push("/User");
-          }
-        });
-    },
-    addUser() {
+    // checkAdmin() {
+    //   fetch("http://localhost/BRIEFS_6/Admin/index", {
+    //     method: "POST",
+    //     body: JSON.stringify(this.PIN),
+    //   })
+    //     .then((result) => {
+    //       return result.json();
+    //     })
+    //     .then((reponse) => {
+    //       if (reponse == !false) {
+    //         localStorage.setItem("role", "admin");
+    //         this.$router.push("/Admin");
+    //       }
+    //     });
+    // },
+    // checkUser() {
+    //   fetch("http://localhost/BRIEFS_6/User/index", {
+    //     method: "POST",
+    //     body: JSON.stringify(this.PIN),
+    //   })
+    //     .then((result) => {
+    //       return result.json();
+    //     })
+    //     .then((reponse) => {
+    //       if (reponse) {
+    //         localStorage.setItem("id", reponse.id);
+    //         localStorage.setItem("role", "user");
+    //         this.$router.push("/User");
+    //       }
+    //     });
+    // },
+    register() {
       fetch("http://localhost/BRIEFS_6/User/register", {
         method: "POST",
         body: JSON.stringify(this.registreForm),

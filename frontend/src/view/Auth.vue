@@ -1,15 +1,10 @@
 <template>
-  <div>
-    <br />
-    <AuthC />
-  </div>
+    <Authentication />
 </template>
 <script>
-import AuthC from "../components/auth/AutoC.vue"
+import Authentication from "../components/auth/Authentication.vue"
 export default {
   name: "AuthView",
-  components: { AuthC },
-  inject: ["setCurrentId"],
-  props: ["role", "changeRole", "id"]
+  components: {  Authentication },
 };
 </script>

@@ -18,6 +18,14 @@ class UserModel
         $result = $stm->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    public function fetchByRef($ref)
+    {
+        $conn = $this->db;
+        $requi = "SELECT * FROM `utilisateur` WHERE Reference_unique=:ref";
+        $stm = $conn->prepare($requi);
+        $stm->execute(["ref" => $ref]);
+        return $stm->fetch(PDO::FETCH_ASSOC);
+    }
     public function select($id)
     {
         $conn = $this->db;

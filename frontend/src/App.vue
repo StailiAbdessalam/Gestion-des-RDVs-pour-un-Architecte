@@ -7,16 +7,30 @@
 
 <script>
 import Navigation from "./components/Navigation.vue";
+import {computed} from "vue";
 export default {
   name: "App",
   components: { Navigation },
+  provide(){
+    return {
+      role: computed(() => this.role),
+      resetRole: this.resetRole,
+      changeRole: this.changeRole,
+    }
+  },
   data() {
     return {
       role: "",
       id: ""
     }
   },
+  mounted() {
+    this.role = localStorage.getItem("role") ?? "";
+  },
   methods: {
+    resetRole(){
+      this.role = "";
+    },
     changeRole(newRole) {
       this.role = newRole;
     }

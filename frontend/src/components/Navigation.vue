@@ -20,29 +20,24 @@
       <router-link v-if="role === 'admin'" class="nav-item" to="/ALLRDV">RDV</router-link>   
     </div>
     <div class="shrink-0 flex items-center gap-2">
-            <a id="hah" href="\" v-if="role" @click="logout()"  class="nav-item">logout</a>
+            <span id="hah" v-if="role" @click="logout"  class="nav-item">logout</span>
     </div>
   </nav>
 </template>
 <script>
 export default {
   name: "nav-item",
+  inject: ["role", "changeRole"],
   data() {
     return {
-      role: "",
+      role: this.role,
     };
-  },
-  mounted() {
-    this.rolll();
   },
   methods: {
     logout() {
       localStorage.removeItem("role");
+      this.changeRole("");
       this.$router.push("/");
-    },
-    rolll() {
-      this.role = localStorage.getItem("role");
-      console.log(this.role);
     },
   },
 };
