@@ -21,7 +21,7 @@ class UserModel
     public function select($id)
     {
         $conn = $this->db;
-        $requi = "SELECT * FROM `reservation` WHERE id=". $id;
+        $requi = "SELECT * FROM `reservation` WHERE id=" . $id;
         $stm = $conn->prepare($requi);
         $stm->execute();
         $result = $stm->fetch(PDO::FETCH_ASSOC);
@@ -41,15 +41,16 @@ class UserModel
     //     $requi = "INSERT INTO `utilisateur` (" . getval($data) . ") VALUES (" . getPlaceholders($data) . ")";
     //     $stm = $conn->prepare($requi);
 
-       
-    
+
+
     //     $stm->execute($data);
     // }
-    public function insert($data){
+    public function insert($data)
+    {
         $conn = $this->db;
         $requet = "INSERT INTO `utilisateur`(`Nom`, `Prenom`, `Age`,`Job`, `CIN`, `Reference_unique`) VALUES (?,?,?,?,?,?)";
         $stmn = $conn->prepare($requet);
-        return $stmn->execute([$data[0],$data[1],$data[2],$data[3],$data[4],$data[5]]);
+        return $stmn->execute([$data[0], $data[1], $data[2], $data[3], $data[4], $data[5]]);
     }
     public function Updat($data, $id)
     {
@@ -58,5 +59,4 @@ class UserModel
         $stm = $conn->prepare($requi);
         $stm->execute();
     }
-
 }
